@@ -1,0 +1,75 @@
+#################################################################
+# 🔑 SECRETS & ENCRYPTION (SOPS / AGE)
+#################################################################
+# Private Keys - NEVER COMMIT THESE
+keys.txt
+age.key
+*.agekey
+identity
+**/age/*.txt
+
+# Decrypted/Plaintext safety net
+*.decrypted.*
+*_decrypted.*
+.sops.yaml.lock
+
+# ALLOWLIST: Force Git to track Encrypted files
+!.sops.yaml
+!**/secrets.yaml
+!**/secrets.nix
+
+#################################################################
+# 🛡️  BITWARDEN CLI
+#################################################################
+.bw_session
+bw-session.sh
+bw-data/
+
+#################################################################
+# ❄️  NIX & HOME MANAGER
+#################################################################
+result
+result-*
+.direnv/
+*.backup
+
+#################################################################
+# 📝 EDITORS (Neovim Primary, VSCode, Vim)
+#################################################################
+# Neovim/Vim Swap, Backup, and Undo files
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+*.un~
+*.bak
+*.tmp
+*.shada
+main.shada
+
+# VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.history/
+
+#################################################################
+# 🐍 PYTHON & CONDA (Local Dev)
+#################################################################
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+.conda/
+
+#################################################################
+# 💻 SYSTEM & VIRTUALIZATION (Windows 11 / VM)
+#################################################################
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# VM / ISO Images
+*.iso
+*.qcow2
+*.vdi
+*.ova
