@@ -5,7 +5,7 @@
         # Home-Manager and NixPkgs Source.
         nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
         home-manager = {
-            url = "github:nix-community/home-manager";
+            url = "github:nix-community/home-manager/master";
             inputs.nixpkgs.follows = "nixpkgs";
         };
         # Neovim Nightly Overlay
@@ -27,8 +27,8 @@
                     extraSpecialArgs = {
                         inherit inputs;
                         extra = {
-                            configs = "${self}/extra-config";
-                            modules = "${self}/extra-modules";
+                            configs = "${self}/extra/configs";
+                            modules = "${self}/extra/modules";
                         };
                     };
                     modules = [ ./home.nix ];
