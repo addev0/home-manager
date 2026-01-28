@@ -1,12 +1,19 @@
 return {
     {
         "nvim-treesitter/nvim-treesitter",
-        -- branch = "main",
+        branch = "main",
         version = false,
         lazy = false, -- Lazy load was removed to improve startup time.
-        build = ":TSUpdate",
+        build = function()
+            local ok, TS = pcall(require, "nvim-treesitter")
+            if not ok then
+                vim.notify("Nvim Treesitter Faile to Load...", vim.log.levels.ERROR)
+                return
+            end
+
+        end,
         event = { "BufReadPost", "BufNewFile" },
-        cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
+        -- cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
         keys = {
             -- Modern keys for incremental selection
             { "<C-space>", desc = "Incremental Selection" },
@@ -51,7 +58,7 @@ return {
         -- Config function that apply options.
         config = function(_, opts)
             -- vim.opt.rtp:prepend(opts.parser_install_dir)
-            require("nvim-treesitter.configs").setup(opts)
+            require("nvim-treesitter").setup(opts)
         end,
     },
 }
