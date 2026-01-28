@@ -2,26 +2,16 @@ return {
     {
         "nvim-treesitter/nvim-treesitter",
         branch = "main",
-        version = false,
-        lazy = false, -- Lazy load was removed to improve startup time.
-        build = function()
-            local ok, TS = pcall(require, "nvim-treesitter")
-            if not ok then
-                vim.notify("Nvim Treesitter Faile to Load...", vim.log.levels.ERROR)
-                return
-            end
+        lazy = false,
+        build = ":TSUpdate",
 
-        end,
-        event = { "BufReadPost", "BufNewFile" },
-        -- cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
-        keys = {
-            -- Modern keys for incremental selection
-            { "<C-space>", desc = "Incremental Selection" },
-            { "<BS>", desc = "Decremental Selection", mode = "x" },
-        },
-        --@type TSConfig
-        opts = {
-            ensure_installed = {
+        config = function()
+            local ts = require("nvim-treesitter")
+
+            ts.setup()
+            
+            -- Checks and installs specified language-parsers asynchronously
+            ts.install({
                 -- Essentials
                 "lua", "luadoc", "vim", "vimdoc", "query",
                 -- Shell & System
@@ -32,33 +22,18 @@ return {
                 "commonlisp",
                 -- Web & Data
                 "markdown", "markdown_inline", "html",
-                "json", "jsonc",
+                "json", -- "jsonc" (deprecated),
                 -- Scripting
                 "nix", "powershell",
                 "yaml",
-            },
-            auto_install = false,
-            highlight = {
-                enable = true,
-                additional_vim_regex_highlighting = false,
-            },
-            indent = {
-                enable = true,
-            },
-            incremental_selection = {
-                enable = true,
-                keymaps = {
-                    init_selection = "<C-space>",
-                    node_incremental = "<C-space>",
-                    scope_incremental = false,
-                    node_decremental = "<BS>",
-                },
-            },
-        },
-        -- Config function that apply options.
-        config = function(_, opts)
-            -- vim.opt.rtp:prepend(opts.parser_install_dir)
-            require("nvim-treesitter").setup(opts)
+            })
+
+            -- Autocmd that starts nvim-treesitter in File-Open
+            vim.api.nvim_create_autocmd("FileType", {
+                callback = function()
+                    pcall(vim.treesitter.start)
+                end
+            })
         end,
     },
 }

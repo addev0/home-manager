@@ -24,6 +24,9 @@
                     email = "adrian.amzca0@gmail.com";
                 };
                 init = { defaultBranch = "main"; };
+                alias = {
+                    ac = "!git add -A && git commit -m";
+                };
             };
         };
 
@@ -56,6 +59,14 @@
                     src = pkgs.zsh-fast-syntax-highlighting;
                     file = "share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh";
                 }
+            ];
+        };
+        # Program: Zoxide Config
+        zoxide = {
+            enable = true;
+            enableZshIntegration = true; 
+            options = [
+                "--no-cmd"
             ];
         };
 
