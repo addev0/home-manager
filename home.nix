@@ -1,5 +1,5 @@
 
-{ config, pkgs, inputs, extra, ... }:
+{ config, lib, pkgs, inputs, extra, ... }:
 {
     home.username = "addev";
     home.homeDirectory = "/home/addev";
@@ -19,14 +19,9 @@
             enable = true;
             package = null;             # Don't install git. (use system git binary)
             settings = {
-                user = {
-                    name = "addev";
-                    email = "adrian.amzca0@gmail.com";
-                };
+                user = { name = "addev"; email = "adrian.amzca0@gmail.com"; };
                 init = { defaultBranch = "main"; };
-                alias = {
-                    ac = "!git add -A && git commit -m";
-                };
+                alias = { ac = "!git add -A && git commit -m"; st = "status"; };
             };
         };
 
@@ -60,13 +55,26 @@
                     file = "share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh";
                 }
             ];
+            # shellAliases = {
+            #     z = "__zoxide_z";
+            #     zi = "__zoxide_zi";
+            # };
+            # Keybind: Emacs, Vii 
+            defaultKeymap = "emacs";
+
+            initContent = lib.mkMerge [
+                (lib.mkOrder 1000 ''
+                    source "$HOME/.config/zsh/customzshrc.zsh"
+                '')
+            ];
         };
         # Program: Zoxide Config
         zoxide = {
             enable = true;
             enableZshIntegration = true; 
             options = [
-                "--no-cmd"
+                "--cmd z"           # explicitly defines 'z' and 'zi' command AND enables tab-completion.
+                "--hook none"       # disables the shell hook that tracks 'cd' movements.
             ];
         };
 
