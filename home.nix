@@ -60,13 +60,7 @@
                     file = "share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh";
                 }
             ];
-            # shellAliases = {
-            #     z = "__zoxide_z";
-            #     zi = "__zoxide_zi";
-            # };
-            # Keybind: Emacs, Vii 
             defaultKeymap = "emacs";
-
             initContent = lib.mkMerge [
                 (lib.mkOrder 1000 ''
                     source "$HOME/.config/zsh/customzshrc.zsh"
