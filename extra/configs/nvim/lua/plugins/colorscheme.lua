@@ -18,6 +18,8 @@ return {
                 -- hl.Cursor = { bg = c.cyan, fg = c.bg }
                 hl.Cursor = { bg = "#00ffff", fg = "#000000" }
 
+                -- init.lua's 'TextYankPost'
+                hl.YankColor = { bg = "#005555", fg = c.fg }
                 -- Optional: Different color for Insert Mode?
                 -- hl.CursorInsert = { bg = c.blue, fg = c.bg } 
             end

@@ -49,7 +49,6 @@ local vim_opts = {
     mouse = 'a',
     showtabline = 1,
     scrolloff = 8,
-    guicursor = "a:blinkwait700-blinkoff400-blinkon250"
 }
 for key, value in pairs(vim_opts) do
     vim.opt[key] = value
@@ -73,7 +72,10 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     desc = 'Highlight yanked text',
     group = vim.api.nvim_create_augroup('custom-highlight-yank', { clear = true }),
     callback = function()
-        vim.hl.on_yank()
+        vim.hl.on_yank({
+            higroup = "YankColor",
+            timeout = 200,
+        })
     end,
 })
 -- ===============================
