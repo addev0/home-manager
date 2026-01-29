@@ -46,6 +46,11 @@
                 extended = true;
                 share = true;
             }; 
+            # ZSH Plugin: AutoSuggestions
+            autosuggestion = {
+                enable = true;
+                strategy = [ "history" "completion" ];
+            };
             # Use fast-syntax-highlighting instead of the default
             syntaxHighlighting.enable = false;
             plugins = [
