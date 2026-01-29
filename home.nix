@@ -60,8 +60,13 @@
                     file = "share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh";
                 }
             ];
+
             defaultKeymap = "emacs";
             initContent = lib.mkMerge [
+                (lib.mkOrder 550''
+                    # Use arrow keys to navigate completion menu.
+                    zstyle ':completion:*' menu select
+                '')
                 (lib.mkOrder 1000 ''
                     source "$HOME/.config/zsh/customzshrc.zsh"
                 '')
@@ -88,6 +93,12 @@
                 "--cmd z"           # explicitly defines 'z' and 'zi' command AND enables tab-completion.
                 "--hook none"       # disables the shell hook that tracks 'cd' movements.
             ];
+        };
+
+        # Program: FZF Config
+        fzf = {
+            enable = true;
+            enableZshIntegration = true;
         };
 
         # Neovim Config
