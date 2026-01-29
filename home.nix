@@ -73,6 +73,19 @@
                 '')
             ];
         };
+
+        # Programs: Starship (ZSH-Prompt)
+        starship = {
+            enable = true;
+            enableZshIntegration = true;
+            settings = let
+                extraConfig = "${extra.configs}/starship/starship.toml";
+            in
+                if builtins.pathExists extraConfig
+                then builtins.fromTOML (builtins.readFile extraConfig)
+                else {};
+        };
+
         # Program: Zoxide Config
         zoxide = {
             enable = true;
