@@ -8,7 +8,6 @@
     home.packages = with pkgs; [
         tree-sitter
         ripgrep
-        bat
         less
     ];
 
@@ -60,7 +59,6 @@
                     file = "share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh";
                 }
             ];
-
             defaultKeymap = "emacs";
             initContent = lib.mkMerge [
                 (lib.mkOrder 550''
@@ -93,6 +91,31 @@
                 "--cmd z"           # explicitly defines 'z' and 'zi' command AND enables tab-completion.
                 "--hook none"       # disables the shell hook that tracks 'cd' movements.
             ];
+        };
+
+        # Program: bat (PAGER)
+        bat = {
+            enable = true;
+            config = {
+                theme = "tokyonight_moon.tmTheme";
+            };
+            # Fetch the custom theme file from the official repo
+            themes = {
+                "tokyonight_moon.tmTheme" = {
+                    src = pkgs.fetchurl {
+                        url = "https://raw.githubusercontent.com/folke/tokyonight.nvim/main/extras/sublime/tokyonight_moon.tmTheme";
+                        hash = "sha256-mi+G7OEp85EwbzAnaF5Vf1zeglyj28rwNlpHxvHQbRc=";
+                    };
+                    # # Method 2: Failed
+                    # src = pkgs.fetchFromGitHub {
+                    #     owner = "folke";
+                    #     repo = "tokyonight.nvim";
+                    #     rev = "v4.11.0"; # or a spcific commit hash for stability
+                    #     sha256 = "sha256-msG8SU5WsBUfVVa/9RPLaymvi5bI8edTavbIq3vRlhI=";
+                    # };
+                    # file = "extras/sublime/tokyonight_moon.tmTheme";
+                };
+            };
         };
 
         # Program: FZF Config
@@ -129,7 +152,10 @@
 
     home.file = {};
 
-    home.sessionVariables = {};
+    home.sessionVariables = {
+        PAGER="bat --paging=always";
+        MANPAGER="sh -c 'col -bx | bat -l man -p'";
+    };
 
     nix.registry = { nixpkgs.flake = inputs.nixpkgs; };
 }
