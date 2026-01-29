@@ -49,6 +49,7 @@ local vim_opts = {
     mouse = 'a',
     showtabline = 1,
     scrolloff = 8,
+    guicursor = "a:blinkwait700-blinkoff400-blinkon250"
 }
 for key, value in pairs(vim_opts) do
     vim.opt[key] = value
@@ -78,7 +79,10 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- ===============================
 
 -- ###############################
---      LAZY.NVIM SETUP
+--      PLUGINS
 -- ===============================
 -- Setup
 require("config.lazy")
+-- ===============================
+
+
