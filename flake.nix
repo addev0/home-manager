@@ -15,7 +15,16 @@
     outputs = { self, nixpkgs, home-manager, ... } @inputs:
         let
             system = "x86_64-linux";
-            pkgs = nixpkgs.legacyPackages.${system};
+            # pkgs = nixpkgs.legacyPackages.${system};
+            pkgs = import nixpkgs {
+                inherit system;
+                overlays = [
+                    (final: prev: {
+                        neovim-nightly = inputs.neovim-nightly-overlay.packages.${system}.default;
+                        tree-sitter-nightly = inputs.neovim-nightly-overlay.inputs.nixpkgs.legacyPackages.${system}.tree-sitter;
+                    })
+                ];
+            };
         in {
             homeConfigurations = {
                 # Replace "addev" with your username or custom home-manager config name
