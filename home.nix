@@ -3,10 +3,10 @@
 {
     home.username = "addev";
     home.homeDirectory = "/home/addev";
-    home.stateVersion = "26.05";
+    home.stateVersion = "25.11";
     # Standard Packages
     home.packages = with pkgs; [
-        tree-sitter
+        tree-sitter-nightly
         ripgrep
         less
     ];
@@ -127,8 +127,10 @@
         # Neovim Config
         neovim = {
             enable = true; 
-            package = inputs.neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system}.default;
+            package = pkgs.neovim-nightly;  # inputs.neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system}.default;
             defaultEditor = true;
+            viAlias = true;
+            vimAlias = true;
         };
 
         # eza config
