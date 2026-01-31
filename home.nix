@@ -66,7 +66,7 @@
                     zstyle ':completion:*' menu select
                 '')
                 (lib.mkOrder 1000 ''
-                    source "$HOME/.config/zsh/customzshrc.zsh"
+                    source "${extra.configs}/zsh/init-sshtogh-pc2.zsh"
                 '')
             ];
         };
