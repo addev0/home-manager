@@ -1,5 +1,5 @@
 
-# Lisp-Family Configuration
+-- Lisp-Family Configuration
 
 vim.filetype.add({
     extension = {
