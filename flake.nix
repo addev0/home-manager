@@ -71,6 +71,17 @@
                     };
                     modules = [ ./home.nix ];
                 };
+                "rzwarch" = home-manager.lib.homeManagerConfiguration {
+                    inherit pkgs;
+                    extraSpecialArgs = {
+                        inherit inputs;
+                        extra = {
+                            configs = "${self}/extra/configs";
+                            modules = "${self}/extra/modules";
+                        };
+                    };
+                    modules = [ ./hosts/rzwarch.nix ];
+                };
             };
         };
 }
