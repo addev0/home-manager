@@ -106,14 +106,6 @@
                         url = "https://raw.githubusercontent.com/folke/tokyonight.nvim/main/extras/sublime/tokyonight_moon.tmTheme";
                         hash = "sha256-mi+G7OEp85EwbzAnaF5Vf1zeglyj28rwNlpHxvHQbRc=";
                     };
-                    # # Method 2: Failed
-                    # src = pkgs.fetchFromGitHub {
-                    #     owner = "folke";
-                    #     repo = "tokyonight.nvim";
-                    #     rev = "v4.11.0"; # or a spcific commit hash for stability
-                    #     sha256 = "sha256-msG8SU5WsBUfVVa/9RPLaymvi5bI8edTavbIq3vRlhI=";
-                    # };
-                    # file = "extras/sublime/tokyonight_moon.tmTheme";
                 };
             };
         };
@@ -128,6 +120,7 @@
         neovim = {
             enable = true; 
             package = pkgs.neovim-nightly;  # inputs.neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system}.default;
+            withNodeJs = true;
             defaultEditor = true;
             viAlias = true;
             vimAlias = true;
