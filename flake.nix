@@ -60,7 +60,7 @@
             };
         in {
             homeConfigurations = {
-                "addev" = home-manager.lib.homeManagerConfiguration {
+                "pc2warch" = home-manager.lib.homeManagerConfiguration {
                     inherit pkgs;
                     extraSpecialArgs = {
                         inherit inputs;
@@ -69,7 +69,7 @@
                             modules = "${self}/extra/modules";
                         };
                     };
-                    modules = [ ./home.nix ];
+                    modules = [ ./hosts/pc2warch.nix ];
                 };
                 "rzwarch" = home-manager.lib.homeManagerConfiguration {
                     inherit pkgs;

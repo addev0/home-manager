@@ -32,7 +32,7 @@ init-sshtogh () {
     echo "Fetching age key..."
     # Fetch age key: supress noisy stderr from bw if already logged in.
     local age_key
-    age_key="$(bw get item id_github-addev --raw | jq -r '.fields[] | select(.name=="age key") | .value')"
+    age_key="$(bw get item agekey-sshtogh --raw | jq -r '.fields[] | select(.name=="private_key") | .value')"
 
     if [[ -z "$age_key" || "$age_key" == "null" ]]; then
         echo "❌ Error: Could not retrieve Age-Key from Bitwarden"
