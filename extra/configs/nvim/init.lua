@@ -1,6 +1,4 @@
 
-
-
 -- ###############################
 --      LEADER MAPPING
 -- ===============================
@@ -86,5 +84,4 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- Setup
 require("config.lazy")
 -- ===============================
-
 

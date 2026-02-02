@@ -6,7 +6,6 @@
     home.stateVersion = "25.11";
     # Standard Packages
     home.packages = with pkgs; [
-        tree-sitter-nightly
         ripgrep
         less
     ];
@@ -115,6 +114,12 @@
             defaultEditor = true;
             viAlias = true;
             vimAlias = true;
+            # Extra Packages
+            extraPackages = with pkgs; [
+                tree-sitter-nightly
+                # LSP
+                lua-language-server
+            ];
         };
 
         # eza config
