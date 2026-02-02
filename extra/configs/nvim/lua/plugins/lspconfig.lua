@@ -2,28 +2,9 @@
 return {
   {
     "neovim/nvim-lspconfig",
-    dependencies = {
-      {
-        "folke/lazydev.nvim",
-        ft = "lua",             -- load only on lua files.
-        opts = {
-          library = {
-            { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-            -- "lazy.nvim", -- include lazy itself
-          },
-        },
-      },
-    },
+    dependencies = { "folke/lazydev.nvim", opts = {} },
     event = { "BufReadPost", "BufNewFile" },
     config = function()
-      -- Global Defaults for v0.12 nightly
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
-
-      vim.lsp.config("*", {
-        capabilities = capabilities
-      })
-
       -- Keymaps
       local key = vim.keymap
       key.set('n', '<leader>cd', vim.diagnostic.open_float, { desc = 'Show line diagnostics' })

@@ -1,4 +1,4 @@
-
+-- /init.lua
 -- ###############################
 --      LEADER MAPPING
 -- ===============================
@@ -7,6 +7,7 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true, noremap = true
 -- Remap leader keys
 vim.g.mapleader = ' '
 vim.g.maplocalleader = '\\'
+
 -- ===============================
 
 -- ###############################

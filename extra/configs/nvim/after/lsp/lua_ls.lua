@@ -1,6 +1,5 @@
 
 -- Create default capabilites
----@type vim.lsp.config
 return {
   settings = {
     Lua = {
@@ -11,7 +10,7 @@ return {
         version = 'LuaJIT',
       },
       diagnostics = {
-        globals = { 'vim', }, 
+        globals = { 'vim', },
       },
       workspace = {
         checkThirdParty = false,
