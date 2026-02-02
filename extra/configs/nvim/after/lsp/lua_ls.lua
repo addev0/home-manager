@@ -1,6 +1,6 @@
 
 -- Create default capabilites
----@type vim.lsp.Config
+---@type vim.lsp.config
 return {
   settings = {
     Lua = {
