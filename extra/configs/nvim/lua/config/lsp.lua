@@ -1,35 +1,35 @@
 -- /lua/config/lsp.lua
----@type vim.lsp.Config
-vim.lsp.config("*", {
-  root_markers = { '.git', '.hg' },
-  capabilities = {
-    textDocument = {
-      semanticTokens = {
-        multilineTokenSupport = true,
-      },
-    },
-  },
-})
+-- ---@type vim.lsp.Config
+-- vim.lsp.config("*", {
+--   root_markers = { '.git', '.hg' },
+--   capabilities = {
+--     textDocument = {
+--       semanticTokens = {
+--         multilineTokenSupport = true,
+--       },
+--     },
+--   },
+-- })
 
-vim.diagnostic.config({
-  virtual_text = {
-    source = "if_many",
-    prefix = '●',
-    severity_sort = true,
-  },
-  signs = {
-    text = {
-      [vim.diagnostic.severity.ERROR] = '',
-      [vim.diagnostic.severity.WARN] = '',
-    },
-    linehl = {
-      [vim.diagnostic.severity.ERROR] = 'ErrorMsg',
-    },
-    numhl = {
-      [vim.diagnostic.severity.WARN] = 'WarningMsg',
-    },
-  },
-})
+-- vim.diagnostic.config({
+--   virtual_text = {
+--     source = "if_many",
+--     prefix = '●',
+--     severity_sort = true,
+--   },
+--   signs = {
+--     text = {
+--       [vim.diagnostic.severity.ERROR] = '',
+--       [vim.diagnostic.severity.WARN] = '',
+--     },
+--     linehl = {
+--       [vim.diagnostic.severity.ERROR] = 'ErrorMsg',
+--     },
+--     numhl = {
+--       [vim.diagnostic.severity.WARN] = 'WarningMsg',
+--     },
+--   },
+-- })
 
 vim.lsp.enable({
   "lua_ls",

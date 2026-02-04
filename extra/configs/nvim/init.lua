@@ -46,14 +46,6 @@ vim.cmd("filetype plugin indent on")
 vim.g.netrw_liststyle = 3
 -- ===============================
 
--- ###############################
---      AUTOCOMMANDS
--- ===============================
--- Sync System-Clipboard
-vim.schedule(function()
-    vim.o.clipboard = 'unnamedplus'
-end)
--- Text Yank Post
 -- ===============================
 
 -- ###############################
@@ -90,6 +82,14 @@ vim.api.nvim_set_hl(0, "Visual", { bg = colors.others.selection_blue, bold = tru
 vim.api.nvim_set_hl(0, "CursorLineNr", { fg = colors.greens.neon_aurora, bold = true })
 vim.api.nvim_set_hl(0, "YankHighlight", { bg = colors.others.selection_blue, bold = true })
 
+-- ###############################
+--      AUTOCOMMANDS
+-- ===============================
+-- Sync System-Clipboard
+vim.schedule(function()
+    vim.o.clipboard = 'unnamedplus'
+end)
+-- Text Yank Post
 vim.api.nvim_create_autocmd('TextYankPost', {
     desc = 'Highlight yanked text',
     group = vim.api.nvim_create_augroup('custom-highlight-yank', { clear = true }),
@@ -100,4 +100,5 @@ vim.api.nvim_create_autocmd('TextYankPost', {
         })
     end,
 })
+--
 -- ===============================
