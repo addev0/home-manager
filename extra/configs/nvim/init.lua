@@ -80,9 +80,10 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- ===============================
 
 -- ###############################
---      PLUGINS
+--      Import Modules
 -- ===============================
 -- Setup
 require("config.lazy")
+require("config.lsp")
 -- ===============================
 
