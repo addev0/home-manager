@@ -15,6 +15,19 @@ vim.diagnostic.config({
   virtual_text = {
     source = "if_many",
     prefix = '●',
+    severity_sort = true,
+  },
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = '',
+      [vim.diagnostic.severity.WARN] = '',
+    },
+    linehl = {
+      [vim.diagnostic.severity.ERROR] = 'ErrorMsg',
+    },
+    numhl = {
+      [vim.diagnostic.severity.WARN] = 'WarningMsg',
+    },
   },
 })
 
@@ -22,17 +35,17 @@ vim.lsp.enable({
   "lua_ls",
 })
 
-local lsp_group = vim.api.nvim_create_augroup("UserLspConfig", { clear = true })
+-- -- This defines the "Dry/Standard" colors. It needs to run whenever the colorscheme loads.
+-- vim.api.nvim_create_autocmd('ColorScheme', {
+--   callback = function()
+--     -- Your specific styling
+--     vim.api.nvim_set_hl(0, 'LspHoverNormal', { bg = '#1f1f1f', fg = '#dcdcdc' })
+--     vim.api.nvim_set_hl(0, 'LspHoverBorder', { fg = '#808080', bg = '#1f1f1f' })
+--     vim.api.nvim_set_hl(0, 'LspReferenceTarget', {})
+--   end,
+-- })
 
--- This defines the "Dry/Standard" colors. It needs to run whenever the colorscheme loads.
-vim.api.nvim_create_autocmd('ColorScheme', {
-  callback = function()
-    -- Your specific styling
-    vim.api.nvim_set_hl(0, 'LspHoverNormal', { bg = '#1f1f1f', fg = '#dcdcdc' })
-    vim.api.nvim_set_hl(0, 'LspHoverBorder', { fg = '#808080', bg = '#1f1f1f' })
-    vim.api.nvim_set_hl(0, 'LspReferenceTarget', {})
-  end,
-})
+local lsp_group = vim.api.nvim_create_augroup("UserLspConfig", { clear = true })
 
 vim.api.nvim_create_autocmd("LspAttach", {
   group = lsp_group,
@@ -79,37 +92,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
       vim.lsp.buf.hover({
         border = 'rounded',
         focusable = true,
-        -- We map all common syntax groups to 'LspHoverNormal' to strip the colors
-        winhighlight = table.concat({
-          'Normal:LspHoverNormal',
-          'FloatBorder:LspHoverBorder',
-          'EndOfBuffer:LspHoverNormal',
-
-          -- Mute the colors by mapping them to your standard text color
-          'Comment:LspHoverNormal',
-          'Constant:LspHoverNormal',
-          'String:LspHoverNormal',
-          'Identifier:LspHoverNormal',
-          'Function:LspHoverNormal',
-          'Statement:LspHoverNormal',
-          'Keyword:LspHoverNormal',
-          'Type:LspHoverNormal',
-          'Operator:LspHoverNormal',
-          'Special:LspHoverNormal',
-
-          -- Handle Treesitter specific groups (if you use Treesitter)
-          '@variable:LspHoverNormal',
-          '@function:LspHoverNormal',
-          '@keyword:LspHoverNormal',
-          '@type:LspHoverNormal',
-        }, ','),
-
         winblend = 0,
       })
     end
     -- If your 'map' function supports a buffer option, use it. 
     -- Otherwise, the standard way inside LspAttach is vim.keymap.set:
-    vim.keymap.set('n', 'K', hover_fixed, { buffer = args.buf, desc = "Hover" })
+    map('K', hover_fixed, "Hover" )
 
   end,
 })

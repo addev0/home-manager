@@ -11,23 +11,6 @@ vim.g.maplocalleader = '\\'
 -- ===============================
 
 -- ###############################
---      COLORSCHEMES
--- ===============================
--- Preferred Colorscheme
-local pref_colo = "tokyonight-moon"
-
-local ok, _ = pcall(vim.cmd, "colorscheme" .. pref_colo)
-if not ok then
-    print("Theme '" .. pref_colo .. "' not found. loading fallback...")
-    -- Fallback
-    vim.cmd("colorscheme unokai")
-    vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-    vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
-    vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
-end
--- ===============================
-
--- ###############################
 --      OPTIONS
 -- ===============================
 local vim_opts = {
@@ -48,10 +31,14 @@ local vim_opts = {
     mouse = 'a',
     showtabline = 1,
     scrolloff = 8,
+    cursorline = true,
 }
 for key, value in pairs(vim_opts) do
     vim.opt[key] = value
 end
+
+-- Apply these after loading your colorscheme
+--
 
 vim.cmd("syntax on")
 vim.cmd("filetype plugin indent on")
@@ -67,17 +54,23 @@ vim.schedule(function()
     vim.o.clipboard = 'unnamedplus'
 end)
 -- Text Yank Post
-vim.api.nvim_create_autocmd('TextYankPost', {
-    desc = 'Highlight yanked text',
-    group = vim.api.nvim_create_augroup('custom-highlight-yank', { clear = true }),
-    callback = function()
-        vim.hl.on_yank({
-            higroup = "YankColor",
-            timeout = 200,
-        })
-    end,
-})
 -- ===============================
+
+-- ###############################
+--      COLORSCHEMES
+-- ===============================
+-- Preferred Colorscheme
+local pref_colo = "tokyonight-moon"
+
+local ok, _ = pcall(vim.cmd, "colorscheme" .. pref_colo)
+if not ok then
+    print("Theme '" .. pref_colo .. "' not found. loading fallback...")
+    -- Fallback
+    vim.cmd("colorscheme unokai")
+    vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+    vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
+    vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
+end
 
 -- ###############################
 --      Import Modules
@@ -85,5 +78,26 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- Setup
 require("config.lazy")
 require("config.lsp")
+local colors = require("config.colors")
 -- ===============================
+-- Apply these after loading tokyonight-moon
 
+-- 1. The subtle dark navy for the current line
+vim.api.nvim_set_hl(0, "CursorLine", { bg = colors.others.very_dark_navy })
+-- 2. The brighter blue for Visual selection (to distinguish from CursorLine)
+vim.api.nvim_set_hl(0, "Visual", { bg = colors.others.selection_blue, bold = true })
+-- 3. The line number remains vibrant to guide your eyes
+vim.api.nvim_set_hl(0, "CursorLineNr", { fg = colors.greens.neon_aurora, bold = true })
+vim.api.nvim_set_hl(0, "YankHighlight", { bg = colors.others.selection_blue, bold = true })
+
+vim.api.nvim_create_autocmd('TextYankPost', {
+    desc = 'Highlight yanked text',
+    group = vim.api.nvim_create_augroup('custom-highlight-yank', { clear = true }),
+    callback = function()
+        vim.hl.on_yank({
+            higroup = "YankHighlight",
+            timeout = 300,
+        })
+    end,
+})
+-- ===============================
