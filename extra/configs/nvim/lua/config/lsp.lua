@@ -1,6 +1,4 @@
-
-
-
+-- /lua/config/lsp.lua
 ---@type vim.lsp.Config
 vim.lsp.config("*", {
   root_markers = { '.git', '.hg' },
@@ -26,6 +24,15 @@ vim.lsp.enable({
 
 local lsp_group = vim.api.nvim_create_augroup("UserLspConfig", { clear = true })
 
+-- This defines the "Dry/Standard" colors. It needs to run whenever the colorscheme loads.
+vim.api.nvim_create_autocmd('ColorScheme', {
+  callback = function()
+    -- Your specific styling
+    vim.api.nvim_set_hl(0, 'LspHoverNormal', { bg = '#1f1f1f', fg = '#dcdcdc' })
+    vim.api.nvim_set_hl(0, 'LspHoverBorder', { fg = '#808080', bg = '#1f1f1f' })
+    vim.api.nvim_set_hl(0, 'LspReferenceTarget', {})
+  end,
+})
 
 vim.api.nvim_create_autocmd("LspAttach", {
   group = lsp_group,
@@ -65,6 +72,45 @@ vim.api.nvim_create_autocmd("LspAttach", {
       vim.lsp.inlay_hint.enable(not is_enabled, { bufnr = args.buf })
       end, "Toggle Inlay Hints" )
     end
+
+    -- We define the function here so it uses your specific style settings
+    -- 3. HOVER POPUP (K)
+    local function hover_fixed()
+      vim.lsp.buf.hover({
+        border = 'rounded',
+        focusable = true,
+        -- We map all common syntax groups to 'LspHoverNormal' to strip the colors
+        winhighlight = table.concat({
+          'Normal:LspHoverNormal',
+          'FloatBorder:LspHoverBorder',
+          'EndOfBuffer:LspHoverNormal',
+
+          -- Mute the colors by mapping them to your standard text color
+          'Comment:LspHoverNormal',
+          'Constant:LspHoverNormal',
+          'String:LspHoverNormal',
+          'Identifier:LspHoverNormal',
+          'Function:LspHoverNormal',
+          'Statement:LspHoverNormal',
+          'Keyword:LspHoverNormal',
+          'Type:LspHoverNormal',
+          'Operator:LspHoverNormal',
+          'Special:LspHoverNormal',
+
+          -- Handle Treesitter specific groups (if you use Treesitter)
+          '@variable:LspHoverNormal',
+          '@function:LspHoverNormal',
+          '@keyword:LspHoverNormal',
+          '@type:LspHoverNormal',
+        }, ','),
+
+        winblend = 0,
+      })
+    end
+    -- If your 'map' function supports a buffer option, use it. 
+    -- Otherwise, the standard way inside LspAttach is vim.keymap.set:
+    vim.keymap.set('n', 'K', hover_fixed, { buffer = args.buf, desc = "Hover" })
+
   end,
 })
 
