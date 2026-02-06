@@ -101,3 +101,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     end,
 })
 -- ===============================
+-- vim.lsp.enable({
+--   "lua_ls"
+-- })
