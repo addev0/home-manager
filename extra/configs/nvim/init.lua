@@ -48,13 +48,23 @@ vim.g.netrw_liststyle = 3
 
 -- ===============================
 
+
+-- ###############################
+--      Import Modules
+-- ===============================
+-- Setup
+require("config.lazy")
+local colors = require("config.colors")
+-- ===============================
+
 -- ###############################
 --      COLORSCHEMES
 -- ===============================
 -- Preferred Colorscheme
 local pref_colo = "tokyonight-moon"
-
-local ok, _ = pcall(vim.cmd, "colorscheme" .. pref_colo)
+local ok, _ = pcall(function()
+  vim.cmd("colorscheme " .. pref_colo)
+end)
 if not ok then
     print("Theme '" .. pref_colo .. "' not found. loading fallback...")
     -- Fallback
@@ -64,12 +74,6 @@ if not ok then
     vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
 end
 
--- ###############################
---      Import Modules
--- ===============================
--- Setup
-require("config.lazy")
-local colors = require("config.colors")
 -- ===============================
 -- Apply these after loading tokyonight-moon
 
