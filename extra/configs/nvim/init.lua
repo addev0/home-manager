@@ -69,7 +69,6 @@ end
 -- ===============================
 -- Setup
 require("config.lazy")
-require("config.lsp")
 local colors = require("config.colors")
 -- ===============================
 -- Apply these after loading tokyonight-moon
@@ -102,3 +101,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 --
 -- ===============================
+-- vim.lsp.enable({
+--   "lua_ls"
+-- })
