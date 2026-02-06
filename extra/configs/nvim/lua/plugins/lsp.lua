@@ -11,6 +11,7 @@ return {
         ---@type vim.diagnostic.Opts
         diagnostics = lspconfig.diagnostics or {},
         servers = lspconfig.servers or {},
+        on_attach = lspconfig.on_attach
       }
       return ret
     end,
@@ -26,6 +27,10 @@ return {
         if server ~= "*" then
           vim.lsp.enable(server)
         end
+      end
+
+      if opts.on_attach then
+        vim.api.nvim_create_autocmd('LspAttach', opts.on_attach)
       end
     end),
   },

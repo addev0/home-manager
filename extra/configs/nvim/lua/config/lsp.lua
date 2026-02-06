@@ -1,11 +1,33 @@
 -- /lua/config/lsp.lua
 local icons = require("config.icons")
 return {
+  on_attach = {
+    group = vim.api.nvim_create_augroup("UserLspConfig", { clear = true }),
+    callback = function(args)
+      local client = vim.lsp.get_client_by_id(args.data.client_id)
+      if not client then return end
+      -- Enable Inlay Hints
+      -- if client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
+      --   vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
+      -- end
+      local function map(keys, func, desc)
+        vim.keymap.set("n", keys, func, { buffer = args.buf, desc = "LSP: " .. desc })
+      end
+      map('<leader>cd', function()
+        vim.diagnostic.open_float({
+          focus = true,       -- automatically enters the window.
+          focusable = true,   -- allows to enter the window
+          scope = 'line',      -- show all diagnostics on the current, line
+          border = 'rounded',
+          source = 'if_many',
+          header = 'Diagnostics',
+        })
+      end, "Show Full Diagnostic (Scrollable)")
+    end,
+  },
   servers = {
     ["*"] = {
-      keys = {
-        {}
-      },
+      keys = {},
     },
     "lua_ls",
   },
@@ -111,6 +133,8 @@ return {
 --     local function map(keys, func, desc)
 --       vim.keymap.set('n', keys, func, { buffer = args.buf, desc = 'LSP: ' .. desc })
 --     end
+--
+--
 --
 --     map('<leader>cd', function()
 --       vim.diagnostic.open_float({
