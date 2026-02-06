@@ -18,7 +18,14 @@ return {
       source = "if_many",
       -- prefix = "●",
       -- this will set set the prefix to a function that returns the diagnostics icon based on the severity
-      prefix = "icons",
+      prefix = function(diagnostic)
+        local icons = require("config.icons").diagnostics
+        for d, icon in pairs(icons) do
+          if diagnostic.severity == vim.diagnostic.severity[d:upper()] then
+            return icon
+          end
+        end
+      end,
     },
     severity_sort = true,
     signs = {

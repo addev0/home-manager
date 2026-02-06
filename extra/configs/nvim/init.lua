@@ -77,7 +77,6 @@ end
 -- ===============================
 -- Setup
 require("config.lazy")
-require("config.lsp")
 local colors = require("config.colors")
 -- ===============================
 -- Apply these after loading tokyonight-moon

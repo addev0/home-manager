@@ -16,17 +16,6 @@ return {
     end,
     config = vim.schedule_wrap(function(_, opts)
       -- Apply diagnostics
-      if type(opts.diagnostics.virtual_text) == "table" and opts.diagnostics.virtual_text.prefix == "icons" then
-        opts.diagnostics.virtual_text.prefix = function(diagnostic)
-          local icons = require("config.icons").diagnostics
-          for d, icon in pairs(icons) do
-            if diagnostic.severity == vim.diagnostic.severity[d:upper()] then
-              return icon
-            end
-          end
-          return "●"
-        end
-      end
       vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
       -- Apply Server Config
       if opts.servers["*"] then
