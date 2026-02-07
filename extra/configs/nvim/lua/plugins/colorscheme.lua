@@ -5,6 +5,8 @@ return {
         lazy = false,
         priority = 1000,
         opts = function(_, opts)
+          local teal = require("config.colors").teal
+          local green = require("config.colors").greens
             -- opts.auto_integrations = true
             -- Your existing options (style, transparent, etc.)
             opts.style = "moon" -- or "moon", "night", "day", "storm"
@@ -22,6 +24,10 @@ return {
                 hl.YankColor = { bg = "#005555", fg = c.fg }
                 -- Optional: Different color for Insert Mode?
                 -- hl.CursorInsert = { bg = c.blue, fg = c.bg } 
+
+                -- MiniStatusLine
+                hl.MiniStatuslineModeNormal = { bg = teal.neon, fg = c.black, bold = true }
+                hl.MiniStatuslineModeInsert = { bg = green.neon_dim, fg = c.black, bold = true }
             end
             return opts
         end,
@@ -31,7 +37,7 @@ return {
             vim.opt.guicursor = "n-v-c:block-Cursor-blinkwait700-blinkoff400-blinkon250,i-ci-ve:ver25-Cursor-blinkwait700-blinkoff400-blinkon250,r-cr-o:hor20-Cursor-blinkwait700-blinkoff400-blinkon250"
             vim.opt.termguicolors = true
         end
-    }, 
+    },
 }
 
 

@@ -5,6 +5,7 @@ colors = {
     selection   = "#1a2b24", -- Shade 1: Deep Opaque Green
     line_bg     = "#14201b", -- Shade 2: Subtle Shadow
     ui_muted    = "#2e5e4e", -- Shade 3: Matte Forest
+    neon_dim    = "#00d484",
     neon_bright = "#42be65", -- Shade 4: The "Active" Neon
     neon_aurora = "#00ff9f", -- Shade 4: AURORA BOREALIS NEON (High Brightness)
     text_legible = "#b1f2b7", -- Shade 5: Readable text green

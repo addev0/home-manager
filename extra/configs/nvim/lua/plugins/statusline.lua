@@ -4,6 +4,9 @@ return {
   {
     "nvim-mini/mini.statusline",
     version = false,
-    opts = {},
+    ---@type PluginOpts
+    opts = {
+      use_icons = true,
+    },
   },
 }
