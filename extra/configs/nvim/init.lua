@@ -21,6 +21,8 @@ local vim_opts = {
   autoindent = true,
   smartindent = false,          -- ALWAYS Disable: Dumb logic
   breakindent = true,
+  -- breakindentopt = "shift:2",
+  linebreak = true,
   termguicolors = true,
   number = true,
   relativenumber = true,
@@ -31,6 +33,7 @@ local vim_opts = {
   mouse = 'a',
   showtabline = 1,
   scrolloff = 8,
+  sidescrolloff = 0,
   cursorline = true,
 }
 for key, value in pairs(vim_opts) do
