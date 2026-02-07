@@ -30,6 +30,7 @@ return {
       keys = {},
     },
     "lua_ls",
+    "nixd",
   },
   ---@type vim.diagnostic.Opts
   diagnostics = {

@@ -1,5 +1,5 @@
 
-{ config, lib, pkgs, inputs, extra, ... }:
+{ config, pkgs, inputs, extra, ... }:
 {
     home.username = "addev";
     home.homeDirectory = "/home/addev";
@@ -69,7 +69,7 @@
                 extraConfig = "${extra.configs}/starship/starship.toml";
             in
                 if builtins.pathExists extraConfig
-                then builtins.fromTOML (builtins.readFile extraConfig)
+                then fromTOML (builtins.readFile extraConfig)
                 else {};
         };
 
@@ -119,6 +119,7 @@
                 tree-sitter-nightly
                 # LSP
                 lua-language-server
+                nixd
             ];
         };
 
