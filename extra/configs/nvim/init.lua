@@ -14,27 +14,27 @@ vim.g.maplocalleader = '\\'
 --      OPTIONS
 -- ===============================
 local vim_opts = {
-    expandtab = true,
-    tabstop = 4,
-    softtabstop = 4,
-    shiftwidth = 4,
-    autoindent = true,
-    smartindent = false,          -- ALWAYS Disable: Dumb logic
-    breakindent = true,
-    termguicolors = true,
-    number = true,
-    relativenumber = true,
-    signcolumn = "yes:1",
-    wrap = false,
-    undofile = true,
-    swapfile = false,
-    mouse = 'a',
-    showtabline = 1,
-    scrolloff = 8,
-    cursorline = true,
+  expandtab = true,
+  tabstop = 4,
+  softtabstop = 4,
+  shiftwidth = 4,
+  autoindent = true,
+  smartindent = false,          -- ALWAYS Disable: Dumb logic
+  breakindent = true,
+  termguicolors = true,
+  number = true,
+  relativenumber = true,
+  signcolumn = "yes:1",
+  wrap = false,
+  undofile = true,
+  swapfile = false,
+  mouse = 'a',
+  showtabline = 1,
+  scrolloff = 8,
+  cursorline = true,
 }
 for key, value in pairs(vim_opts) do
-    vim.opt[key] = value
+  vim.opt[key] = value
 end
 
 -- Apply these after loading your colorscheme
@@ -66,12 +66,12 @@ local ok, _ = pcall(function()
   vim.cmd("colorscheme " .. pref_colo)
 end)
 if not ok then
-    print("Theme '" .. pref_colo .. "' not found. loading fallback...")
-    -- Fallback
-    vim.cmd("colorscheme unokai")
-    vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-    vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
-    vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
+  print("Theme '" .. pref_colo .. "' not found. loading fallback...")
+  -- Fallback
+  vim.cmd("colorscheme unokai")
+  vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+  vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
+  vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
 end
 
 -- ===============================
@@ -80,31 +80,31 @@ end
 -- 1. The subtle dark navy for the current line
 vim.api.nvim_set_hl(0, "CursorLine", { bg = colors.others.very_dark_navy })
 -- 2. The brighter blue for Visual selection (to distinguish from CursorLine)
-vim.api.nvim_set_hl(0, "Visual", { bg = colors.others.selection_blue, bold = true })
+vim.api.nvim_set_hl(0, "Visual", { bg = colors.teal.subtle, bold = true })
 -- 3. The line number remains vibrant to guide your eyes
-vim.api.nvim_set_hl(0, "CursorLineNr", { fg = colors.greens.neon_aurora, bold = true })
-vim.api.nvim_set_hl(0, "YankHighlight", { bg = colors.others.selection_blue, bold = true })
+vim.api.nvim_set_hl(0, "CursorLineNr", { fg = colors.teal.bright, bold = true })
+vim.api.nvim_set_hl(0, "YankHighlight", { bg = colors.teal.muted, bold = true })
 
 -- ###############################
 --      AUTOCOMMANDS
 -- ===============================
 -- Sync System-Clipboard
 vim.schedule(function()
-    vim.o.clipboard = 'unnamedplus'
+  vim.o.clipboard = 'unnamedplus'
 end)
 -- Text Yank Post
 vim.api.nvim_create_autocmd('TextYankPost', {
-    desc = 'Highlight yanked text',
-    group = vim.api.nvim_create_augroup('custom-highlight-yank', { clear = true }),
-    callback = function()
-        vim.hl.on_yank({
-            higroup = "YankHighlight",
-            timeout = 300,
-        })
-    end,
+  desc = 'Highlight yanked text',
+  group = vim.api.nvim_create_augroup('custom-highlight-yank', { clear = true }),
+  callback = function()
+    vim.hl.on_yank({
+      higroup = "YankHighlight",
+      timeout = 300,
+    })
+  end,
 })
 --
 -- ===============================
 -- vim.lsp.enable({
---   "lua_ls"
--- })
+  --   "lua_ls"
+  -- })

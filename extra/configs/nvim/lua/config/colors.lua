@@ -15,12 +15,19 @@ colors = {
     neon_pink_bright = "#ff007c", -- The "Neon" accent for borders/numbers
     neon_pink_dim = "#aa007c", -- The "Neon" accent for borders/numbers
   },
+  teal = {
+    subtle2 = "#1b2b34", -- Deep, dark teal/slate
+    subtle = "#1B3644",
+    muted  = "#27586B",
+    base   = "#73DACA",
+    bright = "#4FD6BE",
+    flash  = "#00FFD9",
+    neon = "#2cf9ed", -- Your cursor/accent teal
+  },
   others = {
     very_dark_navy = "#1a1b26", -- Darker than the default Moon background
     selection_blue  = "#364a82", -- High contrast for Visual mode
     orange_accent   = "#ff9e64", -- For the line number
-    teal_subtle = "#1b2b34", -- Deep, dark teal/slate
-    teal_bright = "#2cf9ed", -- Your cursor/accent teal
     visual_select = "#283e4a", -- Slightly brighter for selection
     purple_dark_opaque  = "#3b224c", -- Shade 1: Selection background (Simulated 30% opacity)
     blue_bright = "#7aa2f7", -- Shade 2: Muted purple/blue for non-critical UI
