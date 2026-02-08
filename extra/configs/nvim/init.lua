@@ -111,3 +111,5 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- vim.lsp.enable({
   --   "lua_ls"
   -- })
+  --
+require("config.cursormode").setup()

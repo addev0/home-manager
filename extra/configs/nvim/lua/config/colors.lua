@@ -1,7 +1,16 @@
 local colors = {}
 
 colors = {
-  greens = {
+  teal = {
+    subtle2 = "#1b2b34", -- Deep, dark teal/slate
+    subtle = "#1B3644",
+    muted  = "#27586B",
+    base   = "#73DACA",
+    bright = "#4FD6BE",
+    flash  = "#00FFD9",
+    neon = "#2cf9ed", -- Your cursor/accent teal
+  },
+  green = {
     selection   = "#1a2b24", -- Shade 1: Deep Opaque Green
     line_bg     = "#14201b", -- Shade 2: Subtle Shadow
     ui_muted    = "#2e5e4e", -- Shade 3: Matte Forest
@@ -15,15 +24,6 @@ colors = {
     neon_pink_opaque = "#5c2440", -- The "Opaque" base (Deep Hot Pink)
     neon_pink_bright = "#ff007c", -- The "Neon" accent for borders/numbers
     neon_pink_dim = "#aa007c", -- The "Neon" accent for borders/numbers
-  },
-  teal = {
-    subtle2 = "#1b2b34", -- Deep, dark teal/slate
-    subtle = "#1B3644",
-    muted  = "#27586B",
-    base   = "#73DACA",
-    bright = "#4FD6BE",
-    flash  = "#00FFD9",
-    neon = "#2cf9ed", -- Your cursor/accent teal
   },
   others = {
     very_dark_navy = "#1a1b26", -- Darker than the default Moon background

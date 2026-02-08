@@ -6,7 +6,7 @@ return {
         priority = 1000,
         opts = function(_, opts)
           local teal = require("config.colors").teal
-          local green = require("config.colors").greens
+          local green = require("config.colors").green
             -- opts.auto_integrations = true
             -- Your existing options (style, transparent, etc.)
             opts.style = "moon" -- or "moon", "night", "day", "storm"
