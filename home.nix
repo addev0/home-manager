@@ -120,6 +120,7 @@
                 # LSP
                 lua-language-server
                 nixd
+                vscode-langservers-extracted
             ];
         };
 
