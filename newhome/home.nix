@@ -1,4 +1,4 @@
-{ config, pkgs, extra, ... }:
+{ config, pkgs, inputs, extra, ... }:
 
 
 {
@@ -107,23 +107,22 @@
 			enableZshIntegration = true;
 		};
 
-        # Neovim Config
-        neovim = {
-            enable = true; 
-            package = pkgs.neovim-nightly;  # inputs.neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system}.default;
-            withNodeJs = true;
-            defaultEditor = true;
-            viAlias = true;
-            vimAlias = true;
-            # Extra Packages
-            extraPackages = with pkgs; [
-                tree-sitter-nightly
-                # LSP
-                lua-language-server
-                nixd
-                vscode-langservers-extracted
-            ];
-        };
+# Neovim Config
+		neovim = {
+			enable = true; 
+			package = pkgs.neovim-nightly;  # inputs.neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system}.default;
+			withNodeJs = true;
+			defaultEditor = true;
+			viAlias = true;
+			vimAlias = true;
+# Extra Packages
+			extraPackages = with pkgs; [
+				tree-sitter-nightly
+# LSP
+					lua-language-server
+					nixd
+			];
+		};
 
 # eza config
 		eza = {
