@@ -8,7 +8,7 @@
 # Standard Packages
 	home.packages = with pkgs; [
 		ripgrep
-			less
+        less
 	];
 
 
@@ -35,7 +35,7 @@
 				path = "${config.xdg.stateHome}/zsh/history";
 				ignorePatterns = [
 					"rm *"
-						"pkill *"
+                    "pkill *"
 				];
 				ignoreAllDups = true;
 				saveNoDups = true;
@@ -80,7 +80,6 @@
 			enableZshIntegration = true; 
 			options = [
 				"--cmd z"           # explicitly defines 'z' and 'zi' command AND enables tab-completion.
-					"--hook none"       # disables the shell hook that tracks 'cd' movements.
 			];
 		};
 
@@ -117,10 +116,12 @@
 			vimAlias = true;
 # Extra Packages
 			extraPackages = with pkgs; [
+                # Treesitter
 				tree-sitter-nightly
-# LSP
-					lua-language-server
-					nixd
+                # LSP
+                lua-language-server
+                nixd
+                vscode-langservers-extracted
 			];
 		};
 
