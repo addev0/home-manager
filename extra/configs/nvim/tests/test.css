@@ -1,0 +1,5 @@
+.test-box {
+  color: ;              /* Missing value */
+  mispelled-prop: 10px; /* Non-existent property */
+  width: "100px";       /* Wrong data type (string vs length) */
+}

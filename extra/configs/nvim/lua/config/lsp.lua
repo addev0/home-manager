@@ -31,6 +31,11 @@ return {
     },
     "lua_ls",
     "nixd",
+    "html",
+    "cssls",
+    "ts_ls",
+    "jsonls",
+    "eslint",
   },
   ---@type vim.diagnostic.Opts
   diagnostics = {

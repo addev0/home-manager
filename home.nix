@@ -122,7 +122,9 @@
                 # LSP
                 lua-language-server
                 nixd
+                htmlhint
                 vscode-langservers-extracted
+                typescript-language-server
             ];
         };
 
