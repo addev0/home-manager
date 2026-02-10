@@ -11,46 +11,9 @@ vim.g.maplocalleader = '\\'
 -- ===============================
 
 -- ###############################
---      OPTIONS
+--      GLOBAL OPTIONS
 -- ===============================
-local vim_opts = {
-  expandtab = true,
-  tabstop = 4,
-  softtabstop = 4,
-  shiftwidth = 4,
-  autoindent = true,
-  smartindent = false,          -- ALWAYS Disable: Dumb logic
-  breakindent = true,
-  -- breakindentopt = "shift:2",
-  linebreak = true,
-  termguicolors = true,
-  number = true,
-  relativenumber = true,
-  signcolumn = "yes:1",
-  wrap = false,
-  undofile = true,
-  swapfile = false,
-  mouse = 'a',
-  showtabline = 1,
-  scrolloff = 8,
-  sidescrolloff = 0,
-  cursorline = true,
-}
-for key, value in pairs(vim_opts) do
-  vim.opt[key] = value
-end
-
--- Apply these after loading your colorscheme
---
-
-vim.cmd("syntax on")
-vim.cmd("filetype plugin indent on")
-
-vim.g.netrw_liststyle = 3
--- ===============================
-
--- ===============================
-
+require("config.options")
 
 -- ###############################
 --      Import Modules
@@ -95,7 +58,7 @@ vim.api.nvim_set_hl(0, "YankHighlight", { bg = colors.teal.muted, bold = true })
 vim.schedule(function()
   vim.o.clipboard = 'unnamedplus'
 end)
--- Text Yank Post
+
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight yanked text',
   group = vim.api.nvim_create_augroup('custom-highlight-yank', { clear = true }),
