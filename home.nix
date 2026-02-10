@@ -1,4 +1,4 @@
-{ config, pkgs, extra, ... }:
+{ config, pkgs, inputs, extra, ... }:
 
 
 {
