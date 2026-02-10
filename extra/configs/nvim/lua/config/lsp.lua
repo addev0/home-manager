@@ -31,10 +31,11 @@ return {
     },
     "lua_ls",
     "nixd",
+    -- vscode-langsrevers-extracted
     "html",
     "cssls",
-    "ts_ls",
     "jsonls",
+    "ts_ls",
     "eslint",
   },
   ---@type vim.diagnostic.Opts

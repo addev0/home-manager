@@ -125,6 +125,7 @@
                 htmlhint
                 vscode-langservers-extracted
                 typescript-language-server
+                nodePackages.eslint
             ];
         };
 
