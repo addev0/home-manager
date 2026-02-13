@@ -8,6 +8,7 @@
 # Standard Packages
 	home.packages = with pkgs; [
 		ripgrep
+        fd
         less
         nodejs
 	];
