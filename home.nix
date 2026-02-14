@@ -11,6 +11,7 @@
         fd
         less
         nodejs
+        python314
 	];
 
 
