@@ -10,6 +10,19 @@ vim.g.maplocalleader = '\\'
 
 -- ===============================
 
+if vim.g.vscode then
+  local ok, vscode = pcall(require, "vscode")
+  if ok and vscode then
+    vim.notify = vscode.notify
+  else
+    vim.notify(("Failed loading vscode module: %s"):format(vscode or "nil"),
+    vim.log.levels.WARN)
+  end
+
+  vim.notify("Loading VSCode Neovim Config...", vim.log.levels.INFO, { title = "VSCode Neovim" })
+  return
+end
+
 -- ###############################
 --      GLOBAL OPTIONS
 -- ===============================

@@ -155,7 +155,11 @@
 # xdg.configFile."nvim/lua/config".source = "${extra.configs}/nvim/lua/config";
 	xdg.configFile."nix/nix.conf".source = ./nix/nix.conf; 
 
-	home.file = {};
+	home.file = {
+        ".vscode-server/data/Machine/settings.json" = {
+            source = "${extra.configs}/vscode/settings.json";
+        };
+    };
 
 	home.sessionVariables = {
 		PAGER="bat --paging=always";

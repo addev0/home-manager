@@ -1,10 +1,26 @@
 {
-    // Neovim Extension
-    "vscode-neovim.NVIM_APPNAME": "vsvim",
-    "vscode-neovim.neovimClean": true,
-    "vscode-neovim.afterInitConfig": [
+    // ===============================================
+	//	Output Settings
+	// ===============================================
+    // Disable Output Panel
+    "vscode-neovim.showOutputChannel": "true", // Disable Output Panel
+    "output.showInPanel": false,
+    "output.autoReveal": false,
+    "output.revealIfOpen": false,
+    "output.defaultChannel": "none",
 
+    // ===============================================
+	//	Neovim Settings
+	// ===============================================
+    // "vscode-neovim.NVIM_APPNAME": "vsvim",
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
+    "vscode-neovim.executablePaths.linux": "/usr/bin/nvim",
+    "vscode-neovim.neovimInitVimPaths": [
+        "$HOME/.config/vsvim/init.lua"
     ],
+    "vscode-neovim.neovimClean": false,
     // ===============================================
 	//	Workbench Settings
 	// ===============================================
@@ -22,7 +38,9 @@
 	"breadcrumbs.enabled": false,
 	"window.zoomLevel": 0.2,
 
-    // Cursor Settings
+    // ===============================================
+	//	Cursor Settings
+	// ===============================================
     "editor.cursorBlinking": "smooth",
     "editor.cursorSmoothCaretAnimation": "on",
     "editor.cursorStyle": "block-outline",
