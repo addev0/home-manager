@@ -63,6 +63,9 @@
 			}
 			];
 			defaultKeymap = "emacs";
+            shellAliases = {
+                vsvim = "NVIM_APPNAME=vsvim nvim";
+            };
 		};
 
 # Programs: Starship (ZSH-Prompt)
@@ -148,6 +151,7 @@
 	xdg.enable = true;
 	xdg.configFile."eza/theme.yml".source = "${extra.configs}/eza/tokyonight.yml";
 	xdg.configFile."nvim".source = "${extra.configs}/nvim";
+	xdg.configFile."vsvim".source = "${extra.configs}/vsvim";
 # xdg.configFile."nvim/lua/config".source = "${extra.configs}/nvim/lua/config";
 	xdg.configFile."nix/nix.conf".source = ./nix/nix.conf; 
 
@@ -156,6 +160,7 @@
 	home.sessionVariables = {
 		PAGER="bat --paging=always";
 		MANPAGER="sh -c 'col -bx | bat -l man -p'";
+        # NVIM_APPNAME="vsvim";
 	};
 
 	nix.registry = { nixpkgs.flake = inputs.nixpkgs; };

@@ -1,0 +1,45 @@
+{
+    // Neovim Extension
+    "vscode-neovim.NVIM_APPNAME": "vsvim",
+    "vscode-neovim.neovimClean": true,
+    "vscode-neovim.afterInitConfig": [
+
+    ],
+    // ===============================================
+	//	Workbench Settings
+	// ===============================================
+	"workbench.colorTheme": "Aura Soft Dark",
+    "workbench.iconTheme": "material-icon-theme",
+	"workbench.startupEditor": "none",
+	"workbench.statusBar.visible": true,
+	"workbench.sideBar.location": "right",
+	"workbench.activityBar.location": "hidden",
+	"explorer.compactFolders": false,
+	"workbench.tree.indent": 8,
+	"workbench.tree.enableStickyScroll": false,
+	"workbench.tree.renderIndentGuides": "onHover",
+	"workbench.editor.showTabs": "single",
+	"breadcrumbs.enabled": false,
+	"window.zoomLevel": 0.2,
+
+    // Cursor Settings
+    "editor.cursorBlinking": "smooth",
+    "editor.cursorSmoothCaretAnimation": "on",
+    "editor.cursorStyle": "block-outline",
+    // Cursor Color Settings
+    "workbench.colorCustomizations": {
+        "editorCursor.foreground": "#ff79c6",
+        "editorCursor.background": "#282a36",
+        "editorCursor.border": "#ff79c6"
+    },
+
+
+    // ===============================================
+	//	Editor Settings
+	// ===============================================
+    "editor.fontFamily": "JetBrainsMono Nerd Font",
+    "editor.fontSize": 14,
+    "editor.lineNumbers": "relative",
+    "terminal.integrated.hideOnStartup": "whenEmpty",
+
+}
