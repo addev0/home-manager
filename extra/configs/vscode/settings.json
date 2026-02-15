@@ -1,4 +1,5 @@
 {
+    "telemetry.enableTelemetry": false,
     // ===============================================
 	//	Output Settings
 	// ===============================================
@@ -17,9 +18,9 @@
         "asvetliakov.vscode-neovim": 1
     },
     "vscode-neovim.executablePaths.linux": "/usr/bin/nvim",
-    "vscode-neovim.neovimInitVimPaths": [
-        "$HOME/.config/vsvim/init.lua"
-    ],
+    // "vscode-neovim.neovimInitVimPaths": [
+    //     "$HOME/.config/vsvim/init.lua"
+    // ],
     "vscode-neovim.neovimClean": false,
     // ===============================================
 	//	Workbench Settings
