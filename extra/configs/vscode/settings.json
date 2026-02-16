@@ -1,5 +1,11 @@
 {
-    "telemetry.enableTelemetry": false,
+    "editor.minimap.enabled": false,
+    "editor.suggestOnTriggerCharacters": true,
+    "editor.quickSuggestions": {
+        "other": true,
+        "comments": false,
+        "strings": false
+    },
     // ===============================================
 	//	Output Settings
 	// ===============================================
@@ -59,6 +65,5 @@
     "editor.fontFamily": "JetBrainsMono Nerd Font",
     "editor.fontSize": 14,
     "editor.lineNumbers": "relative",
-    "terminal.integrated.hideOnStartup": "whenEmpty",
-
+    "terminal.integrated.hideOnStartup": "whenEmpty"
 }
