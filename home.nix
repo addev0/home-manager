@@ -12,6 +12,7 @@
         less
         nodejs
         python314
+        htop
 	];
 
 
