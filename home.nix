@@ -8,10 +8,10 @@
 # Standard Packages
 	home.packages = with pkgs; [
 		ripgrep
-        fd
-        less
-        nodejs
-        python314
+    fd
+    less
+    nodejs
+    python314
 	];
 
 
@@ -142,6 +142,12 @@
 			colors = "always";
 			icons = "auto";
 		};
+
+    # direnv
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
 
 # Install Home-Manager
 		home-manager.enable = true;
