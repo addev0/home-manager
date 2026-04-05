@@ -124,17 +124,17 @@
 			vimAlias = true;
 # Extra Packages
 			extraPackages = with pkgs; [
-                # Treesitter
+        # Treesitter
 				tree-sitter-nightly
-                # LSP
-                lua-language-server
-                nixd
-                htmlhint
-                vscode-langservers-extracted
-                typescript-language-server
-                nodePackages.eslint
-            ];
-        };
+        # LSP
+        lua-language-server
+        nixd
+        htmlhint
+        vscode-langservers-extracted
+        typescript-language-server
+        nodePackages.eslint
+      ];
+    };
 
 # eza config
 		eza = {
