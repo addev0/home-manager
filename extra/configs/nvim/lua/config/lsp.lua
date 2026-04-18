@@ -37,6 +37,9 @@ return {
     "jsonls",
     "ts_ls",
     "eslint",
+    -- Python
+    "pyright",
+    "ruff",
   },
   ---@type vim.diagnostic.Opts
   diagnostics = {
