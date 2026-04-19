@@ -18,6 +18,12 @@
 			system = "x86_64-linux";
 			pkgs = import nixpkgs {
 				inherit system;
+
+        config = {
+          allowUnfree = true;
+          cudaSupport = true;
+        };
+
 				overlays = [
 					(final: prev: {
 						 neovim-nightly = inputs.neovim-nightly-overlay.packages.${system}.default;

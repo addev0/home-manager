@@ -1,5 +1,7 @@
-{ config, pkgs, lib, extra, ... }:
+{ config, pkgs, inputs, lib, extra, ... }:
 {
+    nixpkgs.config.allowUnfree = true;
+    nixpkgs.config.cudaSupport = true;
     imports = [ ../home.nix ];
     programs.zsh.initContent = lib.mkMerge [
         (lib.mkOrder 550''

@@ -11,8 +11,13 @@
     fd
     less
     nodejs
-    python314
+    python311Packages.torch-bin
+    python311Packages.torchaudio-bin
     htop
+    ffmpeg
+    libsndfile
+
+    cudaPackages.cuda_nvcc
 	];
 
 
