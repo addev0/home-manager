@@ -10,8 +10,8 @@
 		ripgrep
     fd
     less
-    nodejs
-    python314
+    # nodejs
+    # python314
     htop
 	];
 
