@@ -1,5 +1,5 @@
-{ config, pkgs, inputs, extra, ... }:
 
+{ config, pkgs, inputs, extra, ... }:
 
 {
 	home.username = "addev";
@@ -11,8 +11,8 @@
 		ripgrep
     fd
     less
-    nodejs
-    python314
+    # nodejs
+    # python314
     htop
 	];
 
@@ -117,29 +117,23 @@
     # Neovim Config
 		neovim = {
 			enable = true; 
-			withNodeJs = true;
+			withNodeJs = false;
+			withPython3 = false;
+			withRuby = false;
 			defaultEditor = true;
 			viAlias = true;
 			vimAlias = true;
       # Extra Packages
 			extraPackages = with pkgs; [
         # Treesitter
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-				tree-sitter-nightly
-=======
         tree-sitter-nightly
->>>>>>> Stashed changes
-=======
-        tree-sitter-nightly
->>>>>>> Stashed changes
         # LSP
         lua-language-server
         nixd
         htmlhint
         vscode-langservers-extracted
         typescript-language-server
-        nodePackages.eslint
+        # nodePackages.eslint
       ];
     };
 
@@ -151,27 +145,15 @@
 			icons = "auto";
 		};
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     # direnv
     direnv = {
       enable = true;
       nix-direnv.enable = true;
     };
 
-# Install Home-Manager
-		home-manager.enable = true;
-	};
-=======
-      # Install Home-Manager
+    # Install Home-Manager
     home-manager.enable = true;
   };
->>>>>>> Stashed changes
-=======
-      # Install Home-Manager
-    home-manager.enable = true;
-  };
->>>>>>> Stashed changes
 
   home.preferXdgDirectories = true;
   xdg.enable = true;
@@ -190,7 +172,7 @@
   home.sessionVariables = {
     PAGER="bat --paging=always";
     MANPAGER="sh -c 'col -bx | bat -l man -p'";
-        # NVIM_APPNAME="vsvim";
+    # NVIM_APPNAME="vsvim";
   };
 
   nix.registry = { nixpkgs.flake = inputs.nixpkgs; };
