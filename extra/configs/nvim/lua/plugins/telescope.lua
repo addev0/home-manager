@@ -10,7 +10,8 @@ return {
     },
     ---@type LazyKeysSpec[]
     keys = {
-      { "<leader>ff", "<cmd>Telescope find_files<CR>", desc = "Telescope: Find files." },
+      { "<leader>ff", "<cmd>Telescope find_files hidden=true<CR>", desc = "Telescope: Find files (include hidden)" },
+      -- { "<leader>ff", "<cmd>Telescope find_files<CR>", desc = "Telescope: Find files (include hidden)" },
     },
   },
 }
