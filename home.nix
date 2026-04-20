@@ -5,7 +5,8 @@
 	home.username = "addev";
 	home.homeDirectory = "/home/addev";
 	home.stateVersion = "25.11";
-# Standard Packages
+
+  # Standard Packages
 	home.packages = with pkgs; [
 		ripgrep
     fd
@@ -15,10 +16,9 @@
     htop
 	];
 
-
-# Packages with Configs
+  # Packages with Configs
 	programs = {
-		git = {
+    git = {
 			enable = true;
 			package = null;             # Don't install git. (use system git binary)
 				settings = {
@@ -28,8 +28,8 @@
 				};
 		};
 
-# ZShell Config
-		zsh = {
+    # ZShell Config
+    zsh = {
 			enable = true; 
 			dotDir = "${config.xdg.configHome}/zsh";
 			history = {
@@ -49,27 +49,27 @@
 				extended = true;
 				share = true;
 			}; 
-# ZSH Plugin: AutoSuggestions
+      # ZSH Plugin: AutoSuggestions
 			autosuggestion = {
 				enable = true;
 				strategy = [ "history" "completion" ];
 			};
-# Use fast-syntax-highlighting instead of the default
+      # Use fast-syntax-highlighting instead of the default
 			syntaxHighlighting.enable = false;
 			plugins = [
-			{
-				name = "fast-syntax-highlighting";
-				src = pkgs.zsh-fast-syntax-highlighting;
-				file = "share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh";
-			}
+        {
+          name = "fast-syntax-highlighting";
+          src = pkgs.zsh-fast-syntax-highlighting;
+          file = "share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh";
+        }
 			];
 			defaultKeymap = "emacs";
-            shellAliases = {
-                vsvim = "NVIM_APPNAME=vsvim nvim";
-            };
+      shellAliases = {
+          vsvim = "NVIM_APPNAME=vsvim nvim";
+      };
 		};
 
-# Programs: Starship (ZSH-Prompt)
+    # Programs: Starship (ZSH-Prompt)
 		starship = {
 			enable = true;
 			enableZshIntegration = true;
@@ -81,7 +81,7 @@
 				else {};
 		};
 
-# Program: Zoxide Config
+    # Program: Zoxide Config
 		zoxide = {
 			enable = true;
 			enableZshIntegration = true; 
@@ -91,13 +91,13 @@
 			];
 		};
 
-# Program: bat (PAGER)
+    # Program: bat (PAGER)
 		bat = {
-			enable = true;
+      enable = true;
 			config = {
 				theme = "tokyonight_moon.tmTheme";
 			};
-# Fetch the custom theme file from the official repo
+      # Fetch the custom theme file from the official repo
 			themes = {
 				"tokyonight_moon.tmTheme" = {
 					src = pkgs.fetchurl {
@@ -108,24 +108,31 @@
 			};
 		};
 
-# Program: FZF Config
+    # Program: FZF Config
 		fzf = {
 			enable = true;
 			enableZshIntegration = true;
 		};
 
-# Neovim Config
+    # Neovim Config
 		neovim = {
 			enable = true; 
-			package = pkgs.neovim-nightly;  # inputs.neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system}.default;
 			withNodeJs = true;
 			defaultEditor = true;
 			viAlias = true;
 			vimAlias = true;
-# Extra Packages
+      # Extra Packages
 			extraPackages = with pkgs; [
         # Treesitter
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 				tree-sitter-nightly
+=======
+        tree-sitter-nightly
+>>>>>>> Stashed changes
+=======
+        tree-sitter-nightly
+>>>>>>> Stashed changes
         # LSP
         lua-language-server
         nixd
@@ -136,14 +143,16 @@
       ];
     };
 
-# eza config
-		eza = {
+    # eza config
+    eza = {
 			enable = true;
 			enableZshIntegration = true;
 			colors = "always";
 			icons = "auto";
 		};
 
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
     # direnv
     direnv = {
       enable = true;
@@ -153,27 +162,38 @@
 # Install Home-Manager
 		home-manager.enable = true;
 	};
+=======
+      # Install Home-Manager
+    home-manager.enable = true;
+  };
+>>>>>>> Stashed changes
+=======
+      # Install Home-Manager
+    home-manager.enable = true;
+  };
+>>>>>>> Stashed changes
 
-	home.preferXdgDirectories = true;
-	xdg.enable = true;
-	xdg.configFile."eza/theme.yml".source = "${extra.configs}/eza/tokyonight.yml";
-	xdg.configFile."nvim".source = "${extra.configs}/nvim";
-	xdg.configFile."vsvim".source = "${extra.configs}/vsvim";
-# xdg.configFile."nvim/lua/config".source = "${extra.configs}/nvim/lua/config";
-	xdg.configFile."nix/nix.conf".source = ./nix/nix.conf; 
+  home.preferXdgDirectories = true;
+  xdg.enable = true;
+  xdg.configFile."eza/theme.yml".source = "${extra.configs}/eza/tokyonight.yml";
+  xdg.configFile."nvim".source = "${extra.configs}/nvim";
+  xdg.configFile."vsvim".source = "${extra.configs}/vsvim";
+  # xdg.configFile."nvim/lua/config".source = "${extra.configs}/nvim/lua/config";
+  xdg.configFile."nix/nix.conf".source = ./nix/nix.conf; 
 
-	home.file = {
-        ".vscode-server/data/Machine/settings.json" = {
-            source = "${extra.configs}/vscode/settings.json";
-        };
+  home.file = {
+    ".vscode-server/data/Machine/settings.json" = {
+        source = "${extra.configs}/vscode/settings.json";
     };
+  };
 
-	home.sessionVariables = {
-		PAGER="bat --paging=always";
-		MANPAGER="sh -c 'col -bx | bat -l man -p'";
+  home.sessionVariables = {
+    PAGER="bat --paging=always";
+    MANPAGER="sh -c 'col -bx | bat -l man -p'";
         # NVIM_APPNAME="vsvim";
-	};
+  };
 
-	nix.registry = { nixpkgs.flake = inputs.nixpkgs; };
+  nix.registry = { nixpkgs.flake = inputs.nixpkgs; };
 }
+
 
