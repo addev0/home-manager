@@ -25,6 +25,7 @@ local vim_opts = {
   sidescrolloff = 0,
   cursorline = true,
   showmode = false,
+  timeoutlen = 500,
 }
 for key, value in pairs(vim_opts) do
   vim.opt[key] = value
