@@ -7,6 +7,7 @@ age.key
 *.agekey
 identity
 **/age/*.txt
+**/.env
 
 # Decrypted/Plaintext safety net
 *.decrypted.*
@@ -22,6 +23,10 @@ identity
 # 📓  LOGS
 #################################################################
 *.log
+**/.log
+**/.logs
+**/.log
+**/log/
 
 #################################################################
 # 🛡️  BITWARDEN CLI
@@ -37,6 +42,7 @@ result
 result-*
 .direnv/
 *.backup
+.envrc
 
 #################################################################
 # 📝 EDITORS (Neovim Primary, VSCode, Vim)
