@@ -133,8 +133,17 @@
         htmlhint
         vscode-langservers-extracted
         typescript-language-server
-        # nodePackages.eslint
       ];
+      plugins = [
+        (pkgs.vimPlugins.nvim-treesitter.withPlugins (p: [
+          p.javascript
+          p.jsdoc
+          p.typescript
+          p.lua
+          p.python
+        ]))
+      ];
+      
     };
 
     # eza config
