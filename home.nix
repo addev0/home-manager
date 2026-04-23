@@ -141,6 +141,11 @@
           p.typescript
           p.lua
           p.python
+          p.css
+          p.html
+          p.python
+          p.json
+          p.yaml
         ]))
       ];
       
