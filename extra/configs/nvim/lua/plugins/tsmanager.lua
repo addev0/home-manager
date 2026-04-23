@@ -19,7 +19,7 @@ return {
           -- Lisp Family
           "commonlisp",
           -- Web & Data
-          "markdown", "markdown_inline", "html",
+          "markdown", "markdown_inline", "html", "html_tags",
           "json", -- "jsonc" (deprecated),
           -- Scripting
           "nix", "powershell",

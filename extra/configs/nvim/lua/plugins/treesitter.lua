@@ -21,9 +21,9 @@ return {
         -- Lisp Family
         "commonlisp",
         -- Web & Data
-        "markdown", "markdown_inline", "html",
-        "javascript", "typescript",
-        "json", -- "jsonc" (deprecated),
+        "markdown", "markdown_inline", "html", "html_tags",
+        "javascript", "typescript", "css",
+        "json", "jsdoc", -- "jsonc" (deprecated),
         -- Scripting
         "nix", "powershell",
         "yaml", "python"

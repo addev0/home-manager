@@ -1,5 +1,10 @@
+* {
+  scroll-behavior: smooth;    
+}
+
 .test-box {
-  color: ;              /* Missing value */
+  color: white;              /* Missing value */
   mispelled-prop: 10px; /* Non-existent property */
   width: "100px";       /* Wrong data type (string vs length) */
 }
+
