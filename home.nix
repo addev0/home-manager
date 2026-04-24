@@ -14,6 +14,8 @@
     # nodejs
     # python314
     htop
+    gnumake
+    gcc
 	];
 
   # Packages with Configs
