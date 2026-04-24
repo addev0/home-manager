@@ -16,6 +16,7 @@
     htop
     gnumake
     gcc
+    qbittorrent-nox
 	];
 
   # Packages with Configs
@@ -179,6 +180,16 @@
   xdg.configFile."vsvim".source = "${extra.configs}/vsvim";
   # xdg.configFile."nvim/lua/config".source = "${extra.configs}/nvim/lua/config";
   xdg.configFile."nix/nix.conf".source = ./nix/nix.conf; 
+  xdg.configFile."qBittorrent/qBittorrent.conf".text = ''
+    [LegalNotice]
+    Accepted=true
+
+    [Preferences]
+    WebUI\LocalHostAuth=false
+    WebUI\AuthSubnetWhitelist=127.0.0.1/32
+    WebUI\AuthSubnetWhitelistEnabled=true
+    WebUI\Port=8080
+  '';
 
   home.file = {
     ".vscode-server/data/Machine/settings.json" = {
