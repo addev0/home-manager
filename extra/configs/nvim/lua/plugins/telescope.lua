@@ -10,8 +10,10 @@ return {
     },
     ---@type LazyKeysSpec[]
     keys = {
-      { '<leader>fh', "<cmd>Telescope find_files hidden=true<CR>", desc = 'Telescope: Find files (include hidden)' },
+      { '<leader>fh', "<cmd>Telescope find_files hidden=true no_ignore=true<CR>", desc = 'Telescope: Find files (include hidden)' },
+      { '<leader>fhp', '<cmd>Telescope find_files hidden=true no_ignore=true search_dirs={".."}<CR>', desc = 'Telescope: Find files (include hidden)' },
       { '<leader>ff', "<cmd>Telescope find_files<CR>", desc = 'Telescope: Find files' },
+      { '<leader>fp', '<cmd>Telescope find_files search_dirs={".."}<CR>', desc = 'Telescope: Find files (include hidden)' },
       { '<leader>fg', "<cmd>Telescope live_grep<CR>", desc = 'Telescope: Grep String (Live)' },
       { '<leader>fs', "<cmd>Telescope grep_string<CR>", desc = 'Telescope Grep Word under Cursor' },
       { '<leader>fb', "<cmd>Telescope buffers<CR>", desc = 'Telescope: Find Buffers' },
