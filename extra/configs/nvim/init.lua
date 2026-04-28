@@ -92,3 +92,4 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 vim.opt.guicursor = "n-v-c:block-Cursor-blinkwait700-blinkoff400-blinkon250,i-ci-ve:ver25-Cursor-blinkwait700-blinkoff400-blinkon250,r-cr-o:hor20-Cursor-blinkwait700-blinkoff400-blinkon250"
 require("config.cursormode").setup()
+

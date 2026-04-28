@@ -16,7 +16,6 @@
     htop
     gnumake
     gcc
-    qbittorrent-nox
 	];
 
   # Packages with Configs
@@ -150,6 +149,7 @@
           p.python
           p.json
           p.yaml
+          p.c
         ]))
       ];
       
