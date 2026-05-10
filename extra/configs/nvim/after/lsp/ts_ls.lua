@@ -9,4 +9,12 @@ return {
     "svelte",
     "astro",
   },
+  init_options = {
+    hostInfo = "neovim",
+    -- This helps the server prioritize completions
+    preferences = {
+      includeCompletionsWithSnippetText = true,
+      includeCompletionsForImportStatements = true,
+    },
+  },
 }

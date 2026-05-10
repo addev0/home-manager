@@ -1,5 +1,6 @@
 -- /lua/config/lsp.lua
 local icons = require("config.icons")
+
 return {
   on_attach = {
     group = vim.api.nvim_create_augroup("UserLspConfig", { clear = true }),
