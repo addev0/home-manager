@@ -42,7 +42,7 @@ init-sshtogh () {
     echo "🔏 Unlocking secrets..."
 
     export SOPS_AGE_KEY="$age_key"
-    export SSHTOGH_FILE="/mnt/c/Users/addev/RemoteDrives/OneDrive/DevTools/git/secrets/id_github-addev.sops"
+    export SSHTOGH_FILE="/mnt/c/Users/addev/OneDrive/DevTools/git/secrets/id_github-addev.sops"
 
     if [[ -f "$SSHTOGH_FILE" ]]; then
         [[ -z "$SSH_AUTH_SOCK" ]] && eval "$(ssh-agent -s)" &>/dev/null
