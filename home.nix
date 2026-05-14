@@ -67,7 +67,7 @@
 			];
 			defaultKeymap = "emacs";
       shellAliases = {
-          vsvim = "NVIM_APPNAME=vsvim nvim";
+        vsvim = "NVIM_APPNAME=vsvim nvim";
       };
 		};
 
@@ -88,8 +88,8 @@
 			enable = true;
 			enableZshIntegration = true; 
 			options = [
-				"--cmd z"           # explicitly defines 'z' and 'zi' command AND enables tab-completion.
-                "--hook none"       # disables the shell hook that tracks 'cd' movements.
+        "--cmd z"           # explicitly defines 'z' and 'zi' command AND enables tab-completion.
+        "--hook none"       # disables the shell hook that tracks 'cd' movements.
 			];
 		};
 

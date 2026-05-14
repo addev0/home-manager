@@ -10,4 +10,7 @@
             source "${extra.configs}/zsh/init-sshtogh-rzp.zsh"
         '')
     ];
+    programs.zsh.shellAliases = {
+      code = "/mnt/c/Users/adpro/AppData/Local/Programs/Microsoft\ VS\ Code/bin/code";
+    };
 }
