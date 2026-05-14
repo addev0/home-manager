@@ -11,6 +11,6 @@
         '')
     ];
     programs.zsh.shellAliases = {
-      code = "/mnt/c/Users/adpro/AppData/Local/Programs/Microsoft\ VS\ Code/bin/code";
+      code = ''"/mnt/c/Users/adpro/AppData/Local/Programs/Microsoft VS Code/bin/code"'';
     };
 }

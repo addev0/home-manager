@@ -41,7 +41,7 @@
 				path = "${config.xdg.stateHome}/zsh/history";
 				ignorePatterns = [
 					"rm *"
-                    "pkill *"
+          "pkill *"
 				];
 				ignoreAllDups = true;
 				saveNoDups = true;
