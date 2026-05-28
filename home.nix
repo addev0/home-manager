@@ -16,6 +16,11 @@
     htop
     gnumake
     gcc
+    # bitwarden
+    bitwarden-cli
+    jq
+    age
+    sops
 	];
 
   # Packages with Configs
