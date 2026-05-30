@@ -2,12 +2,13 @@ if vim.bo.filetype ~= "python" then
     return
 end
 
+vim.b.html_indentexpr = ""
 vim.bo.indentexpr = ""
 
-vim.api.nvim_create_autocmd("FileType", {
+vim.api.nvim_create_autocmd({ "BufWinEnter", "FileType" }, {
   pattern = "python",
   callback = function()
-    vim.bo.indentexpr = ""
+    vim.opt_local.indentexpr = ""
   end,
 })
 
