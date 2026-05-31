@@ -4,11 +4,11 @@
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
     # Home-Manager and NixPkgs Source.
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/e8e446a361172fe838243958325845d0b845c5e5";
     utils.url = "github:numtide/flake-utils";
 
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -23,7 +23,7 @@
             # Define a fresh build for Tree-Sitter 0.26.1
             tree-sitter-nightly = prev.stdenv.mkDerivation rec {
               pname = "tree-sitter";
-              version = "0.26.3";
+              version = "0.26.9";
 
               # 1. Fetch the official binary release
               src = prev.fetchurl {
