@@ -1,3 +1,4 @@
+-- /after/ftplugin/python.lua
 if vim.bo.filetype ~= "python" then
     return
 end

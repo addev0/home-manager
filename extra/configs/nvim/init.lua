@@ -29,6 +29,7 @@ end
 --      GLOBAL OPTIONS
 -- ===============================
 require("config.options")
+vim.cmd("filetype plugin indent on")
 
 -- ###############################
 --      Import Modules
