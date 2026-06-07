@@ -21,6 +21,19 @@
     jq
     age
     sops
+  
+    # Font
+    fontconfig
+    freetype
+    dejavu_fonts
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-cjk-serif
+    noto-fonts-cjk-sans-static
+    noto-fonts-cjk-serif-static
+    noto-fonts-color-emoji
+    liberation_ttf
+    nerd-fonts.jetbrains-mono
 	];
 
   # Packages with Configs
