@@ -233,8 +233,8 @@
 
   home.sessionVariables = {
     MANPATH = "/home/addev/.local/state/nix/profile/share/man:";
+    MANPAGER = "sh -c 'MANWIDTH=120 col -bx | bat -l man --theme=tokyonight_moon.tmTheme'";
     PAGER = "bat --paging=always";
-    MANPAGER = "sh -c 'col -bx | bat -l man --theme=tokyonight_moon.tmTheme --style=plain --paging=always'";
     MANROFFOPT = "-c";
   };
 
