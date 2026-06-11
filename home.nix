@@ -1,4 +1,4 @@
-
+# ./home.nix
 { config, pkgs, inputs, extra, ... }:
 
 {
@@ -8,14 +8,14 @@
 
   # Standard Packages
 	home.packages = with pkgs; [
+    # OS Essentials
 		ripgrep
     fd
     less
-    # nodejs
-    # python314
     htop
     gnumake
     gcc
+
     # bitwarden
     bitwarden-cli
     jq
@@ -36,7 +36,7 @@
     nerd-fonts.jetbrains-mono
 	];
 
-  # Packages with Configs
+  # Packages (Programs) with Configs
 	programs = {
     git = {
 			enable = true;
@@ -47,6 +47,12 @@
 					alias = { ac = "!git add -A && git commit -m"; st = "status"; };
 				};
 		};
+
+    # Manual pages
+    man = {
+      enable = true;
+      generateCaches = true;
+    };
 
     # ZShell Config
     zsh = {
@@ -196,18 +202,20 @@
   xdg.configFile."eza/theme.yml".source = "${extra.configs}/eza/tokyonight.yml";
   xdg.configFile."nvim".source = "${extra.configs}/nvim";
   xdg.configFile."vsvim".source = "${extra.configs}/vsvim";
-  # xdg.configFile."nvim/lua/config".source = "${extra.configs}/nvim/lua/config";
   xdg.configFile."nix/nix.conf".source = ./nix/nix.conf; 
-  xdg.configFile."qBittorrent/qBittorrent.conf".text = ''
-    [LegalNotice]
-    Accepted=true
 
-    [Preferences]
-    WebUI\LocalHostAuth=false
-    WebUI\AuthSubnetWhitelist=127.0.0.1/32
-    WebUI\AuthSubnetWhitelistEnabled=true
-    WebUI\Port=8080
-  '';
+  # NOTE: Uncomment if you want to use qBittorrent:
+
+  # xdg.configFile."qBittorrent/qBittorrent.conf".text = ''
+  #   [LegalNotice]
+  #   Accepted=true
+  #
+  #   [Preferences]
+  #   WebUI\LocalHostAuth=false
+  #   WebUI\AuthSubnetWhitelist=127.0.0.1/32
+  #   WebUI\AuthSubnetWhitelistEnabled=true
+  #   WebUI\Port=8080
+  # '';
 
   home.file = {
     ".vscode-server/data/Machine/settings.json" = {
@@ -221,5 +229,3 @@
   };
   nix.registry = { nixpkgs.flake = inputs.nixpkgs; };
 }
-
-
