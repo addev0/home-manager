@@ -216,11 +216,9 @@
   };
 
   home.sessionVariables = {
-    PAGER="bat --paging=always";
-    MANPAGER="sh -c 'col -bx | bat -l man -p'";
-    # NVIM_APPNAME="vsvim";
+    PAGER = "bat --paging=always";
+    MANPAGER = "less";
   };
-
   nix.registry = { nixpkgs.flake = inputs.nixpkgs; };
 }
 
