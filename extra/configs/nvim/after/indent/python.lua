@@ -7,7 +7,8 @@ opt.cindent = false
 
 opt.autoindent = true
 
--- opt.expandtab = true
--- opt.tabstop = 4
--- opt.shiftwidth = 4
--- opt.softtabstop = 4
+vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+opt.expandtab = true
+opt.tabstop = 4
+opt.shiftwidth = 4
+opt.softtabstop = 4
