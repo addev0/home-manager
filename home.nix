@@ -48,10 +48,18 @@
 				};
 		};
 
-    # Manual pages
-    man = {
+    # NOTE: Manual pages
+    tealdeer = {
       enable = true;
-      generateCaches = true;
+      settings = {
+        display = {
+          compact = false;
+          use_pager = true;
+        };
+        updates = {
+          auto_updates = false;
+        };
+      };
     };
 
     # ZShell Config
@@ -224,8 +232,11 @@
   };
 
   home.sessionVariables = {
+    MANPATH = "/home/addev/.local/state/nix/profile/share/man:";
     PAGER = "bat --paging=always";
-    MANPAGER = "less";
+    MANPAGER = "sh -c 'col -bx | bat -l man --theme=tokyonight_moon.tmTheme --style=plain --paging=always'";
+    MANROFFOPT = "-c";
   };
+
   nix.registry = { nixpkgs.flake = inputs.nixpkgs; };
 }
