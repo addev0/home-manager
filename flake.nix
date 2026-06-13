@@ -1,3 +1,4 @@
+# ./flake.nix
 {
   description = "Nix Home-Manager Public Configuration (addev)";
 
@@ -62,7 +63,7 @@
 
     in {
       homeConfigurations = {
-        "pc2warch" = home-manager.lib.homeManagerConfiguration {
+        "pc1" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           extraSpecialArgs = {
             inherit inputs;
@@ -74,7 +75,7 @@
           modules = [ ./hosts/pc2warch.nix ];
         };
 
-        "rzwarch" = home-manager.lib.homeManagerConfiguration {
+        "pc2" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           extraSpecialArgs = {
             inherit inputs;
@@ -86,7 +87,7 @@
           modules = [ ./hosts/rzwarch.nix ];
         };
 
-        "surf7warch" = home-manager.lib.homeManagerConfiguration {
+        "pc3" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           extraSpecialArgs = {
             inherit inputs;
