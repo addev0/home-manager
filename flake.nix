@@ -5,7 +5,7 @@
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
     # Home-Manager and NixPkgs Source.
-    nixpkgs.url = "github:nixos/nixpkgs/e8e446a361172fe838243958325845d0b845c5e5";
+    nixpkgs.url = "github:nixos/nixpkgs/a0374025a863d007d98e3297f6aa46cc3141c2f0";
     utils.url = "github:numtide/flake-utils";
 
     home-manager = {
@@ -62,8 +62,8 @@
       pkgs = mkPkgs system;
 
     in {
-      homeConfigurations = {
-        "pc1" = home-manager.lib.homeManagerConfiguration {
+        #  FIXME: Replace 'hostName' with preferred config name and filename
+        "hostName" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           extraSpecialArgs = {
             inherit inputs;
@@ -72,33 +72,8 @@
               modules = "${self}/extra/modules";
             };
           };
-          modules = [ ./hosts/pc2warch.nix ];
+          modules = [ ./hosts/hostName.nix ];   
         };
-
-        "pc2" = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          extraSpecialArgs = {
-            inherit inputs;
-            extra = {
-              configs = "${self}/extra/configs";
-              modules = "${self}/extra/modules";
-            };
-          };
-          modules = [ ./hosts/rzwarch.nix ];
-        };
-
-        "pc3" = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          extraSpecialArgs = {
-            inherit inputs;
-            extra = {
-              configs = "${self}/extra/configs";
-              modules = "${self}/extra/modules";
-            };
-          };
-          modules = [ ./hosts/surf7warch.nix ];
-        };
-      };
 
       packages = utils.lib.eachDefaultSystem (system: {
         default = (mkPkgs system).tree-sitter-nightly;
