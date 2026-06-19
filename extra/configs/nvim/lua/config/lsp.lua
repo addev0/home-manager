@@ -27,8 +27,39 @@ return {
       end, "Show Full Diagnostic (Scrollable)")
 
       map("grr", function()
-        require("telescope.builtin").lsp_references()
-      end, "References"
+        require("telescope.builtin").lsp_references({
+          attach_mappings = function(prompt_bufnr, tmap)
+            local actions = require("telescope.actions")
+            local action_state = require("telescope.actions.state")
+
+            local open_readonly = function()
+              local selection = action_state.get_selected_entry()
+              actions.close(prompt_bufnr)
+
+              if not selection or not selection.filename then
+                return
+              end
+
+              vim.cmd("rightbelow vsplit " .. vim.fn.fnameescape(selection.filename))
+
+              if selection.lnum then
+                vim.api.nvim_win_set_cursor(0, {
+                  selection.lnum,
+                  math.max((selection.col or 1) - 1, 0),
+                })
+              end
+
+              vim.bo.readonly = true
+              vim.bo.modifiable = false
+            end
+
+            tmap("i", "<CR>", open_readonly)
+            tmap("n", "<CR>", open_readonly)
+
+            return true
+          end,
+        })
+      end, "References Read-Only"
       )
     end,
   },
