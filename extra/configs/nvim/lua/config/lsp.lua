@@ -14,6 +14,7 @@ return {
       local function map(keys, func, desc)
         vim.keymap.set("n", keys, func, { buffer = args.buf, desc = "LSP: " .. desc })
       end
+
       map('<leader>cd', function()
         vim.diagnostic.open_float({
           focus = true,       -- automatically enters the window.
@@ -24,6 +25,11 @@ return {
           header = 'Diagnostics',
         })
       end, "Show Full Diagnostic (Scrollable)")
+
+      map("grr", function()
+        require("telescope.builtin").lsp_references()
+      end, "References"
+      )
     end,
   },
   servers = {
