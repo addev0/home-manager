@@ -63,8 +63,9 @@
 
     in {
         #  FIXME: Replace 'hostName' with preferred config name and filename
-        "hostName" = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
+      homeConfigurations = {
+        "<hostName>" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs; # <== Replace
           extraSpecialArgs = {
             inherit inputs;
             extra = {
@@ -72,11 +73,12 @@
               modules = "${self}/extra/modules";
             };
           };
-          modules = [ ./hosts/hostName.nix ];   
+          modules = [ ./hosts/<hostName>.nix ]; # <== Replace
         };
 
       packages = utils.lib.eachDefaultSystem (system: {
         default = (mkPkgs system).tree-sitter-nightly;
       });
     };
+  };
 }

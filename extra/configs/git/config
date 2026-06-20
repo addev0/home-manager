@@ -1,0 +1,12 @@
+[alias]
+	ac = "!git add -A && git commit -m"
+	st = "status"
+
+[init]
+	defaultBranch = "main"
+
+[user]
+    # FIXME: Replace placeholders
+	email = "<gitUserEmail>"
+	name = "<gitUserName>"
+

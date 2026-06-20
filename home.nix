@@ -2,9 +2,11 @@
 { config, pkgs, inputs, extra, ... }:
 
 {
-	home.username = "addev";
-	home.homeDirectory = "/home/addev";
-	home.stateVersion = "25.11";
+  home = {
+    username = "addev";
+    homeDirectory = "/home/addev";
+    stateVersion = "25.11";
+  };
 
   # Standard Packages
 	home.packages = with pkgs; [
@@ -42,7 +44,8 @@
 			enable = true;
 			package = null;             # Don't install git. (use system git binary)
 				settings = {
-					user = { name = "addev"; email = "adrian.amzca0@gmail.com"; };
+          # FIXME: Replace placeholders: '<gitUserName>' & '<gitUserEmail>'
+					user = { name = "<gitUserName>"; email = "<gitUserEmail>"; };
 					init = { defaultBranch = "main"; };
 					alias = { ac = "!git add -A && git commit -m"; st = "status"; };
 				};
@@ -181,6 +184,7 @@
           p.python
           p.json
           p.yaml
+          p.toml
           p.c
         ]))
       ];
@@ -211,6 +215,7 @@
   xdg.configFile."nvim".source = "${extra.configs}/nvim";
   xdg.configFile."vsvim".source = "${extra.configs}/vsvim";
   xdg.configFile."nix/nix.conf".source = ./nix/nix.conf; 
+  xdg.configFile."git/config".source = "${extra.configs}/git/config"; # <== NOTE: Edit/Create git connfig
 
   # NOTE: Uncomment if you want to use qBittorrent:
 
