@@ -62,10 +62,16 @@
       pkgs = mkPkgs system;
 
     in {
+      homeConfigurations = {
         #  FIXME: Replace 'hostName' with preferred config name and filename
+<<<<<<< HEAD
       homeConfigurations = {
         "<hostName>" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs; # <== Replace
+=======
+        "rzwarch" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+>>>>>>> f90e159 (Check)
           extraSpecialArgs = {
             inherit inputs;
             extra = {
@@ -73,12 +79,18 @@
               modules = "${self}/extra/modules";
             };
           };
+<<<<<<< HEAD
           modules = [ ./hosts/<hostName>.nix ]; # <== Replace
+=======
+          modules = [ ./hosts/rzwarch.nix ];   
+>>>>>>> f90e159 (Check)
         };
+      };
 
       packages = utils.lib.eachDefaultSystem (system: {
         default = (mkPkgs system).tree-sitter-nightly;
       });
+
     };
   };
 }
