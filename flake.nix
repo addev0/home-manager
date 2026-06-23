@@ -1,6 +1,6 @@
 # ./flake.nix
 {
-  description = "Nix Home-Manager Public Configuration (addev)";
+  description = "Nix Home-Manager Public Configuration";
 
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
@@ -21,7 +21,7 @@
 
         overlays = [
           (final: prev: {
-            # Define a fresh build for Tree-Sitter 0.26.1
+            # Define a fresh build for Tree-Sitter
             tree-sitter-nightly = prev.stdenv.mkDerivation rec {
               pname = "tree-sitter";
               version = "0.26.9";
@@ -61,36 +61,41 @@
       system = "x86_64-linux";
       pkgs = mkPkgs system;
 
+      user = {
+       # FIXME: Replace placeholders below
+        name = "name";
+        module = "module";
+        # gitName = "gitname";
+        # gitEmail = "gitemail";
+      };
+
     in {
       homeConfigurations = {
-        #  FIXME: Replace 'hostName' with preferred config name and filename
-<<<<<<< HEAD
-      homeConfigurations = {
-        "<hostName>" = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs; # <== Replace
-=======
-        "rzwarch" = home-manager.lib.homeManagerConfiguration {
+        ${user.name} = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
->>>>>>> f90e159 (Check)
+
           extraSpecialArgs = {
-            inherit inputs;
+            inherit inputs user;
+
             extra = {
               configs = "${self}/extra/configs";
               modules = "${self}/extra/modules";
             };
           };
-<<<<<<< HEAD
-          modules = [ ./hosts/<hostName>.nix ]; # <== Replace
-=======
-          modules = [ ./hosts/rzwarch.nix ];   
->>>>>>> f90e159 (Check)
+
+          modules = [
+            ./home.nix
+            (./modules + "/${user.module}.nix")
+          ];
         };
       };
 
-      packages = utils.lib.eachDefaultSystem (system: {
-        default = (mkPkgs system).tree-sitter-nightly;
-      });
-
+      packages = utils.lib.eachDefaultSystem (system:
+        let
+          pkgs = mkPkgs system;
+        in {
+          default = pkgs.tree-sitter-nightly;
+        }
+      );
     };
-  };
 }

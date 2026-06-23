@@ -1,10 +1,10 @@
 # ./home.nix
-{ config, pkgs, inputs, extra, ... }:
+{ config, pkgs, inputs, user, extra, ... }:
 
 {
   home = {
-    username = "addev";
-    homeDirectory = "/home/addev";
+    username = user.name;
+    homeDirectory = "/home/${user.name}";
     stateVersion = "25.11";
   };
 
@@ -40,18 +40,7 @@
 
   # Packages (Programs) with Configs
 	programs = {
-    git = {
-			enable = true;
-			package = null;             # Don't install git. (use system git binary)
-				settings = {
-          # FIXME: Replace placeholders: '<gitUserName>' & '<gitUserEmail>'
-					user = { name = "<gitUserName>"; email = "<gitUserEmail>"; };
-					init = { defaultBranch = "main"; };
-					alias = { ac = "!git add -A && git commit -m"; st = "status"; };
-				};
-		};
 
-    # NOTE: Manual pages
     tealdeer = {
       enable = true;
       settings = {
@@ -177,7 +166,6 @@
           p.jsdoc
           p.typescript
           p.lua
-          p.python
           p.css
           p.html
           # p.html_tags
@@ -186,6 +174,7 @@
           p.yaml
           p.toml
           p.c
+          p.scheme
         ]))
       ];
       
@@ -210,25 +199,13 @@
   };
 
   home.preferXdgDirectories = true;
+
   xdg.enable = true;
   xdg.configFile."eza/theme.yml".source = "${extra.configs}/eza/tokyonight.yml";
   xdg.configFile."nvim".source = "${extra.configs}/nvim";
   xdg.configFile."vsvim".source = "${extra.configs}/vsvim";
   xdg.configFile."nix/nix.conf".source = ./nix/nix.conf; 
-  xdg.configFile."git/config".source = "${extra.configs}/git/config"; # <== NOTE: Edit/Create git connfig
-
-  # NOTE: Uncomment if you want to use qBittorrent:
-
-  # xdg.configFile."qBittorrent/qBittorrent.conf".text = ''
-  #   [LegalNotice]
-  #   Accepted=true
-  #
-  #   [Preferences]
-  #   WebUI\LocalHostAuth=false
-  #   WebUI\AuthSubnetWhitelist=127.0.0.1/32
-  #   WebUI\AuthSubnetWhitelistEnabled=true
-  #   WebUI\Port=8080
-  # '';
+  xdg.configFile."git/config".source = "${extra.configs}/git/config";
 
   home.file = {
     ".vscode-server/data/Machine/settings.json" = {
@@ -237,8 +214,9 @@
   };
 
   home.sessionVariables = {
-    MANPATH = "/home/addev/.local/state/nix/profile/share/man:";
-    MANPAGER = "sh -c 'MANWIDTH=120 col -bx | bat -l man --theme=tokyonight_moon.tmTheme'";
+    MANPATH = "/home/${user.name}/.local/state/nix/profile/share/man:";
+    MANWIDTH = "120";
+    MANPAGER = "sh -c 'col -bx | bat -l man --theme=tokyonight_moon.tmTheme'";
     PAGER = "bat --paging=always";
     MANROFFOPT = "-c";
   };

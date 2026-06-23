@@ -24,5 +24,16 @@
         . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
       fi
     '')
+
+    # xdg.configFile."qBittorrent/qBittorrent.conf".text = ''
+    #   [LegalNotice]
+    #   Accepted=true
+    #
+    #   [Preferences]
+    #   WebUI\LocalHostAuth=false
+    #   WebUI\AuthSubnetWhitelist=127.0.0.1/32
+    #   WebUI\AuthSubnetWhitelistEnabled=true
+    #   WebUI\Port=8080
+    # '';
   ];
 }
