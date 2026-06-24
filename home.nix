@@ -215,7 +215,9 @@
 
   home.sessionVariables = {
     MANPATH = "/home/${user.name}/.local/state/nix/profile/share/man:";
-    MANPAGER = "sh -c 'bat --language=manpage --paging=always";
+    MANWIDTH = "120";
+    MANROFFOPT = "-c";
+    MANPAGER = "sh -c 'col -bx | bat -l man --theme=tokyonight_moon.tmTheme'";
     PAGER = "bat --paging=always";
   };
 
