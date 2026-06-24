@@ -215,10 +215,8 @@
 
   home.sessionVariables = {
     MANPATH = "/home/${user.name}/.local/state/nix/profile/share/man:";
-    MANWIDTH = "120";
-    MANPAGER = "sh -c 'col -bx | bat -l man --theme=tokyonight_moon.tmTheme'";
+    MANPAGER = "sh -c 'bat --language=manpage --paging=always";
     PAGER = "bat --paging=always";
-    MANROFFOPT = "-c";
   };
 
   nix.registry = { nixpkgs.flake = inputs.nixpkgs; };
