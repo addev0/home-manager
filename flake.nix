@@ -5,7 +5,7 @@
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
     # Home-Manager and NixPkgs Source.
-    nixpkgs.url = "github:nixos/nixpkgs/a0374025a863d007d98e3297f6aa46cc3141c2f0";
+    nixpkgs.url = "github:nixos/nixpkgs/d57af924f160a5084293c71c2043f058bd1cdb60";
     utils.url = "github:numtide/flake-utils";
 
     home-manager = {
